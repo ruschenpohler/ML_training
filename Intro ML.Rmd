@@ -1,0 +1,719 @@
+---
+title: "A Conceptual Introduction to ML"
+subtitle: "Internal Presentation, CEGA"
+author: "Julius Ruschenpohler"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
+    # self_contained: true
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: inline
+---
+class: inverse, middle
+
+```{R, setup, include = F}
+# devtools::install_github("dill/emoGG")
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, ggridges,
+  latex2exp, viridis, extrafont, gridExtra,
+  kableExtra, snakecase, janitor,
+  data.table, dplyr, estimatr,
+  lubridate, knitr, parallel,
+  lfe,
+  here, magrittr
+)
+# Define pink color
+red_pink <- "#e64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#fb6107"
+blue <- "#3b3b9a"
+green <- "#8bb174"
+grey_light <- "grey70"
+grey_mid <- "grey50"
+grey_dark <- "grey20"
+purple <- "#6A5ACD"
+slate <- "#314f4f"
+# Dark slate grey: #314f4f
+# Knitr options
+opts_chunk$set(
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 7,
+  fig.width = 10.5,
+  warning = F,
+  message = F
+)
+opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+  svg(tempfile(), width = width, height = height)
+})
+options(crayon.enabled = F)
+options(knitr.table.format = "html")
+# A blank theme for ggplot
+theme_empty <- theme_bw() + theme(
+  line = element_blank(),
+  rect = element_blank(),
+  strip.text = element_blank(),
+  axis.text = element_blank(),
+  plot.title = element_blank(),
+  axis.title = element_blank(),
+  plot.margin = structure(c(0, 0, -0.5, -1), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_simple <- theme_bw() + theme(
+  line = element_blank(),
+  panel.grid = element_blank(),
+  rect = element_blank(),
+  strip.text = element_blank(),
+  axis.text.x = element_text(size = 18, family = "STIXGeneral"),
+  axis.text.y = element_blank(),
+  axis.ticks = element_blank(),
+  plot.title = element_blank(),
+  axis.title = element_blank(),
+  # plot.margin = structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_axes_math <- theme_void() + theme(
+  text = element_text(family = "MathJax_Math"),
+  axis.title = element_text(size = 22),
+  axis.title.x = element_text(hjust = .95, margin = margin(0.15, 0, 0, 0, unit = "lines")),
+  axis.title.y = element_text(vjust = .95, margin = margin(0, 0.15, 0, 0, unit = "lines")),
+  axis.line = element_line(
+    color = "grey70",
+    size = 0.25,
+    arrow = arrow(angle = 30, length = unit(0.15, "inches")
+  )),
+  plot.margin = structure(c(1, 0, 1, 0), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_axes_serif <- theme_void() + theme(
+  text = element_text(family = "MathJax_Main"),
+  axis.title = element_text(size = 22),
+  axis.title.x = element_text(hjust = .95, margin = margin(0.15, 0, 0, 0, unit = "lines")),
+  axis.title.y = element_text(vjust = .95, margin = margin(0, 0.15, 0, 0, unit = "lines")),
+  axis.line = element_line(
+    color = "grey70",
+    size = 0.25,
+    arrow = arrow(angle = 30, length = unit(0.15, "inches")
+  )),
+  plot.margin = structure(c(1, 0, 1, 0), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_axes <- theme_void() + theme(
+  text = element_text(family = "Fira Sans Book"),
+  axis.title = element_text(size = 18),
+  axis.title.x = element_text(hjust = .95, margin = margin(0.15, 0, 0, 0, unit = "lines")),
+  axis.title.y = element_text(vjust = .95, margin = margin(0, 0.15, 0, 0, unit = "lines")),
+  axis.line = element_line(
+    color = grey_light,
+    size = 0.25,
+    arrow = arrow(angle = 30, length = unit(0.15, "inches")
+  )),
+  plot.margin = structure(c(1, 0, 1, 0), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_set(theme_gray(base_size = 20))
+# Column names for regression results
+reg_columns <- c("Term", "Est.", "S.E.", "t stat.", "p-Value")
+# Function for formatting p values
+format_pvi <- function(pv) {
+  return(ifelse(
+    pv < 0.0001,
+    "<0.0001",
+    round(pv, 4) %>% format(scientific = F)
+  ))
+}
+format_pv <- function(pvs) lapply(X = pvs, FUN = format_pvi) %>% unlist()
+# Tidy regression results table
+tidy_table <- function(x, terms, highlight_row = 1, highlight_color = "black", highlight_bold = T, digits = c(NA, 3, 3, 2, 5), title = NULL) {
+  x %>%
+    tidy() %>%
+    select(1:5) %>%
+    mutate(
+      term = terms,
+      p.value = p.value %>% format_pv()
+    ) %>%
+    kable(
+      col.names = reg_columns,
+      escape = F,
+      digits = digits,
+      caption = title
+    ) %>%
+    kable_styling(font_size = 20) %>%
+    row_spec(1:nrow(tidy(x)), background = "white") %>%
+    row_spec(highlight_row, bold = highlight_bold, color = highlight_color)
+}
+```
+
+
+.pull-left[
+.smaller[
+
+### PART I
+1. Why Machine learning?
+2. What is the Intuition behind ML?
+  
+]
+]
+
+.pull-right[
+.smaller[
+  
+### PART II
+3. Where to Can ML be put to Use?
+4. What Caveats Apply?
+5. What are Current Areas of Development?
+
+]
+]
+
+---
+
+layout: false
+# PART I
+
+## Machine Learning: Why and How?
+
+
+.pull-left[
+
+### 1. [Standard Regression Inference](#standard)
+  - [An Inference Problem](#standard)
+  - [Link Function](#standard1)
+  - [Loss Function](#standard2)
+  - [Minimizing Statistical Loss](#standard3)
+  
+]
+
+.pull-right[
+
+### 2. [Why Machine Learning](#whyMLA)
+  - [High Dimensionality](#whyMLA)
+  - [Prediction vs. Causal Inference](#whyMLB)
+  - [Bias-variance Trade-off](#whyMLC)
+  
+### 3. [What is the Intuition behind ML?](#whatMLA)
+  - [Goal of Machine Learning](#whatMLA)
+  - [Supervised vs. Unsupervised Learning](#whatMLB)
+  - [Regularization](#whatMLC)
+  - [Classification](#whatMLD)
+
+]
+
+
+---
+name: standard
+
+# 1. Standard Regression Inference
+
+## An Inference Problem
+
+Given some set of predictors, we would like to predict an outcome:
+
+$$\mathbb { E } \left[ v _ { i } | x _ { i } \right]$$
+
+That is, what is $v _ { i }$ given $x _ { i }$?
+
+- Example?
+
+### Practically, we have to:
+
+.pull-left[
+
+1. Link predictors to outcome (link fct)
+1. Define best fit (loss fct)
+1. Maximize best fit
+
+]
+
+.pull-right[
+
+**Can we make sense of this graphically?**
+
+]
+
+
+---
+name: standardA_1
+
+# 1. Standard Regression Inference
+
+### Graphical Illustration
+
+.pull-left[
+
+$$X = \begin{bmatrix} 
+    x_{1,1} & x_{1,2} & \dots \\
+    \vdots & \ddots & \\
+    x_{n,1} &        & x_{n,p} 
+    \end{bmatrix}$$
+]
+
+$\rightarrow$
+
+.pull-right[
+
+$$V = \begin{bmatrix} 
+    v_{1,1} & v_{1,2} & \dots \\
+    \vdots & \ddots & \\
+    v_{n,1} &        & v_{n,k} 
+    \end{bmatrix}$$
+
+]
+
+How to go 
+
+
+---
+name: standard1
+
+# 1. Standard Regression Inference
+
+## 1. Link Function
+
+First, we need to link the predictors $x _ { i }$ to the outcome $v _ { i }$:
+
+$$\mathbb { E } \left[ v _ { i } | x _ { i } \right] = f \left( \eta _ { i } \right)$$
+
+For simplicity, let $\eta _ { i }$ be a linear fct of $x _ { i }$:
+
+$$\eta _ { i } = \alpha + x _ { i } \beta$$
+
+
+---
+name: standard2
+
+# 1. Standard Regression Inference
+
+## 2. Loss Function
+
+Second, we need to define "best fit".
+
+Equivalent to saying, we need to minimize statistical loss $\ell ( \alpha , \beta )$
+
+Let the loss fct $\ell ( \alpha , \beta )$ be quadratic (as per "ordinary least **squares**"):
+
+$$\ell ( \alpha , \beta ) = \sum _ {i=1} ^ {n} \left( v _ { i } - \eta _ { i } \right) ^ { 2 }$$
+
+That is, we consider the squared distance between our model $\eta_{i}$ and reality $v_{i}$.
+
+---
+name: standard3
+
+# 1. Standard Regression Inference
+
+## 3. Minimizing Statistical Loss (~Risk)
+
+Now, let's find the point at which $\ell ( \alpha , \beta )$ is smallest:
+
+$$\min \{ \ell ( \alpha , \beta ) \}$$
+
+### Practically, we have to:
+
+1. Choose a starting point
+1. Use Stochastic Gardient Descent to find minimum in iterative process
+
+```{r, echo=FALSE}
+library(png)
+library(grid)
+blackbox <- readPNG("pics/SGD.png")
+grid.raster(SGD, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.75, height = 0.7,)
+```
+
+
+
+---
+name: whyMLB
+
+# 1. Why Machine Learning?
+
+## B) High Dimensionality and Sparcity
+
+
+---
+name: whyMLC
+
+# 1. Why Machine Learning?
+
+## C) Prediction =/= Causal Inference
+Collinearity
+
+
+---
+name: whyMLD
+
+# 1. Why Machine Learning?
+
+## D) Bias-variance Trade-off
+
+
+---
+name: whatMLA
+
+# 2. What is the Intuition behind ML?
+
+## A) Goal of Machine Learning
+
+### Variable Shrinkage and Selection
+
+Construct a function mapping features (~covariates) onto labels (~outcomes) that generalizes to new data
+
+
+### Dimensionality Reduction
+
+Identify optimal base vector to most efficiently describe data
+
+
+---
+name: whatMLB
+
+# 2. What is the Intuition behind ML?
+
+## B) Supervised vs. Unsupervised ML
+
+### Supervised Machine Learning
+
+Predicting a label (~outcome)
++ Minimizing some kind of prediction error
+
+### Unsupervised Machine Learning
+
+Classify data 
++ Minimizing misclassification
+
+
+- This presentation focusses on supervised ML.
+
+
+---
+name: whatMLC
+
+# 2. What is the Intuition behind ML?
+
+
+
+
+
+---
+name: whatMLD
+
+# 2. What is the Intuition behind ML?
+
+## D) Regularization or Penalized Regression
+
+Open question: **How to deal with high dimensionality in data?**
+
+Let's remember the loss fct: $\ell ( \alpha , \beta )$
+
+- However, now the set of potential predictors is too large!
+
+To make the model less complex, we would like to select only the most important predictors.
+
+Let's penalize model complexity:
+
+$$\min \left\{ \ell ( \alpha , \beta ) + n \lambda \sum _ { j = 1 } ^ { p } k _ { j } \left( \beta _ { j } \right) \right\}$$
+
+$\lambda$ 
+
+---
+name: whatMLE
+
+# II. What is the Intuition behind ML?
+
+## E) Classification/Non-parametric Methods
+
+
+
+
+---
+
+layout: false
+# PART II
+
+## Application, Caveats, and Developments in ML
+
+
+.pull-left[
+
+### 3. [Where to Use ML?](#whereML1)
+  - [Prediction](#whereML1)
+  - [Targeting](#whereML2)
+  - [Measurement](#whereML3)
+  - [Heterogeneity](#whereML4)
+  - [Pre-analysis Plans](#whereML5)
+  
+### 4. [What Caveats Apply](#caveats1)
+  - [Ethics](#caveats1)
+  - [Opacity](#caveats2)
+  - [Model Complexity](#caveats3)
+  - [Reproducibility](#caveats4)
+  - [Model Robustness](#caveats5)
+  - [Causality](#caveats6)
+  
+]
+
+.pull-right[
+  
+### 5. [Current Areas of Development](#develop1)
+  - [Prediction](#develop1)
+  - [Model Robustness](#develop2)
+  - [Causality and heterogeneity](#develop3)
+
+]
+
+
+
+---
+
+name: whereML1
+
+# 3. Where can ML be Put to Use?
+
+## A) Prediction
+
+
+---
+
+name: whereML2
+
+# 3. Where can ML be Put to Use?
+
+## B) Targeting
+
+
+---
+
+name: whereML3
+
+# 3. Where can ML be Put to Use?
+
+## C) Measurement
+
+
+---
+
+name: whereML4
+
+# 3. Where can ML be Put to Use?
+
+## D) Hetereogeneity
+
+
+---
+
+name: whereML5
+
+# 3. Where can ML be Put to Use?
+
+## E) Pre-analysis Plans
+
+
+---
+
+name: caveats1
+
+# 4. What Caveats Apply?
+
+## A) Ethics
+
+SICSS slides
+
+
+---
+
+name: caveats2
+
+# 4. What Caveats Apply?
+
+## B) Opacity or explainability ("black box")
+
+```{r, echo=FALSE}
+library(png)
+library(grid)
+blackbox <- readPNG("pics/Sci_blackbox.png")
+grid.raster(blackbox, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.75, height = 0.7,)
+```
+
+[Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
+
+
+---
+
+name: caveats2a
+
+# 4. What Caveats Apply?
+
+## B) Opacity or explainability ("black box")
+
+### Two sides to this argument
+   
+1. **Opaque process**
++ De-bugging
+    
+2. **Prediction without regard of DGP**
++ Intelligibility
++ Trust
++ External validity
+    
+    
+- Literature: see, e.g., Ribeiro et al., 2016
+
+
+---
+
+name: caveats3
+
+# 4. What Caveats Apply?
+
+## C) Model Complexity
+
+### Many researcher degrees of freedom
+
+* Data pre-processing
+  + Example: Text analysis (libraries, tokenization, n-grams, etc.)
+
+* Regularization
+
+* Cross-validation
+
+
+
+---
+
+name: caveats4
+
+# 4. What Caveats Apply?
+
+## D) Reproducibility
+
+```{r, echo=FALSE}
+library(png)
+library(grid)
+repro <- readPNG("pics/Sci_Reproducibility.png")
+grid.raster(repro, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.7, height = 0.45,)
+```
+
+    Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
+    
+    
+---
+
+name: caveats4a
+
+# 4. What Caveats Apply?
+
+## D) Reproducibility
+
+### Encoding causal assumptions
+    
+* Testability detection via graphical representations (e.g., DAGs a la Pearl, 1995)
+    
+- LIterature: see, e.g. Dacrema et al., 2019; Dodge et al., 2019; McDermott et al., 2019; Mitchell et al., 2019.
+
+
+---
+
+name: caveats5
+
+# 4. What Caveats Apply?
+
+## E) Model Robustness or Adaptability
+
+### Problem
+    
+External validity and out-of-sample prediction
+1. Performance under changed environmental conditions]
+2. Adversarial attacks
+
+### Solutions
+    
+* Life-long maschine learning (Chen and Liu, 2016)
+* Transfer learning
+* Domain adaptation
+
+
+---
+
+name: caveats6
+
+# 4. What Caveats Apply
+
+## F) Causality
+
+    Selection-on-observables assumption with optimized set of control variables
+
+
+---
+
+name: caveatsX
+
+# XXXXXXXXXXXXXX
+
+## X) Selective Labels for the Tested
+
+
+
+---
+
+name: develop1
+
+# 5. Current Areas of Development
+
+## A) Re: Prediction
+
+
+---
+
+name: develop2
+
+# 5. Current Areas of Development
+
+## A) Re: Model Robustness
+
+
+---
+
+name: develop3
+
+# 5. Current Areas of Development
+
+## B) Re: Causality and Heterogeneous Treatment Effects
+
+
+
+
+---
+
+name: conclusion
+
+
+
+---
+
+name: extras
+
+# Additional Slides
+
+## Minimizing Statistical Loss
+
+Minimize empirical risk over space of functions (e.g., linear function, quadratic loss, neural networks, etc.):
+
+\begin{equation}
+f ^ { * } = \arg \min _ { f \in \mathcal { H } } \frac { 1 } { n } \sum L \left( f \left( x _ { i } \right) , y _ { i } \right)
+\label{minloss}
+\end{equation}
+
+Practical steps:
+* Choose type of loss function, e.g. quadratic $\left( f \left( x _ { i } \right) - y _ { i } \right) ^ { 2 }$
+* Choose starting point
+* Optimize using Stochastic Gradient Descent
+
+

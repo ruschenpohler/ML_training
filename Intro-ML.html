@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>A Conceptual Introduction to ML</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Julius Ruschenpohler" />
+    <meta name="date" content="2019-09-30" />
+    <link href="Intro-ML_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="Intro-ML_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="Intro-ML_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my-css.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# A Conceptual Introduction to ML
+## Internal Presentation, CEGA
+### Julius Ruschenpohler
+### 30 September 2019
+
+---
+
+class: inverse, middle
+
+
+
+
+.pull-left[
+.smaller[
+
+### PART I
+1. Why Machine learning?
+2. What is the Intuition behind ML?
+  
+]
+]
+
+.pull-right[
+.smaller[
+  
+### PART II
+3. Where to Can ML be put to Use?
+4. What Caveats Apply?
+5. What are Current Areas of Development?
+
+]
+]
+
+---
+
+layout: false
+# PART I
+
+## Machine Learning: Why and How?
+
+
+.pull-left[
+
+### 1. [Why Machine Learning](#whyMLA)
+  - [Standard OLS in Three Steps](#whyMLA)
+  - [High Dimensionality](#whyMLB)
+  - [Prediction vs. Causal Inference](#whyMLC)
+  - [Bias-variance Trade-off](#whyMLD)
+  
+]
+
+.pull-right[
+  
+### 2. [What is the Intuition behind ML?](#whatMLA)
+  - [Goal of Machine Learning](#whatMLA)
+  - [Supervised vs. Unsupervised Learning](#whatMLB)
+  - [Regularization](#whatMLC)
+  - [Classification](#whatMLD)
+
+]
+
+
+---
+name: whyMLA
+
+# 1. Why Machine Learning?
+
+## A) Standard OLS in Three Steps
+
+### An Inference Problem
+
+Given some set of predictors, we would like to predict an outcome:
+
+`$$\mathbb { E } \left[ v _ { i } | x _ { i } \right]$$`
+
+That is, what is `\(v _ { i }\)` given `\(x _ { i }\)`?
+
+- Example?
+
+### Practically, we have to:
+
+.pull-left[
+
+1. Link predictors to outcome (link fct)
+1. Define best fit (loss fct)
+1. Maximize best fit
+
+]
+
+.pull-right[
+
+**Can we make sense of this graphically?**
+
+]
+
+
+---
+name: whyMLA0
+
+# 1. Why Machine Learning?
+
+## A) Standard OLS in Three Steps
+
+.pull-left[
+
+`$$X = \begin{bmatrix} 
+    x_{11} &amp; x_{12} &amp; \dots \\
+    \vdots &amp; \ddots &amp; \\
+    x_{n1} &amp;        &amp; x_{np} 
+    \end{bmatrix}$$`
+]
+
+`\(\rightarrow\)`
+
+.pull-right[
+
+`$$V = \begin{bmatrix} 
+    v_{11} &amp; v_{12} &amp; \dots \\
+    \vdots &amp; \ddots &amp; \\
+    v_{n1} &amp;        &amp; v_{nk} 
+    \end{bmatrix}$$`
+
+]
+
+How to go 
+
+
+---
+name: whyMLA1
+
+# 1. Why Machine Learning?
+
+## A) Standard OLS Case
+
+### 1. Link Function
+
+First, we need to link the predictors `\(x _ { i }\)` to the outcome `\(v _ { i }\)`:
+
+`$$\mathbb { E } \left[ v _ { i } | x _ { i } \right] = f \left( \eta _ { i } \right)$$`
+
+For simplicity, let `\(\eta _ { i }\)` be a linear fct of `\(x _ { i }\)`:
+
+`$$\eta _ { i } = \alpha + x _ { i } \beta$$`
+
+
+---
+name: whyMLA2
+
+# 1. Why Machine Learning?
+
+### 2. Loss Function
+
+Second, we need to define "best fit".
+
+Equivalent to saying, we need to minimize statistical loss `\(\ell ( \alpha , \beta )\)`
+
+Let the loss fct `\(\ell ( \alpha , \beta )\)` be quadratic (as per "ordinary least **squares**"):
+
+`$$\ell ( \alpha , \beta ) = \sum _ {i=1} ^ {n} \left( v _ { i } - \eta _ { i } \right) ^ { 2 }$$`
+
+That is, we consider the squared distance between our model `\(\eta_{i}\)` and reality `\(v_{i}\)`.
+
+---
+name: whyMLA3
+
+# 1. Why Machine Learning?
+
+### 3. Minimizing Statistical Loss (~Risk)
+
+Now, let's find the point at which `\(\ell ( \alpha , \beta )\)` is smallest:
+
+`$$\min \{ \ell ( \alpha , \beta ) \}$$`
+
+### Practically, we have to:
+
+1. Choose a starting point
+1. Use Stochastic Gardient Descent to find minimum
+
+PICTURE
+
+
+---
+name: whyMLB
+
+# 1. Why Machine Learning?
+
+## B) High Dimensionality and Sparcity
+
+
+---
+name: whyMLC
+
+# 1. Why Machine Learning?
+
+## C) Prediction =/= Causal Inference
+Collinearity
+
+
+---
+name: whyMLD
+
+# 1. Why Machine Learning?
+
+## D) Bias-variance Trade-off
+
+
+---
+name: whatMLA
+
+# 2. What is the Intuition behind ML?
+
+## A) Goal of Machine Learning
+
+### Variable Shrinkage and Selection
+
+Construct a function mapping features (~covariates) onto labels (~outcomes) that generalizes to new data
+
+
+### Dimensionality Reduction
+
+Identify optimal base vector to most efficiently describe data
+
+
+---
+name: whatMLB
+
+# 2. What is the Intuition behind ML?
+
+## B) Supervised vs. Unsupervised ML
+
+### Supervised Machine Learning
+
+Predicting a label (~outcome)
++ Minimizing some kind of prediction error
+
+### Unsupervised Machine Learning
+
+Classify data 
++ Minimizing misclassification
+
+
+- This presentation focusses on supervised ML.
+
+
+---
+name: whatMLC
+
+# 2. What is the Intuition behind ML?
+
+
+
+
+
+---
+name: whatMLD
+
+# 2. What is the Intuition behind ML?
+
+## D) Regularization or Penalized Regression
+
+Open question: **How to deal with high dimensionality in data?**
+
+Let's remember the loss fct: `\(\ell ( \alpha , \beta )\)`
+
+- However, now the set of potential predictors is too large!
+
+To make the model less complex, we would like to select only the most important predictors.
+
+Let's penalize model complexity:
+
+`$$\min \left\{ \ell ( \alpha , \beta ) + n \lambda \sum _ { j = 1 } ^ { p } k _ { j } \left( \beta _ { j } \right) \right\}$$`
+
+`\(\lambda\)` 
+
+---
+name: whatMLE
+
+# II. What is the Intuition behind ML?
+
+## E) Classification/Non-parametric Methods
+
+
+
+
+---
+
+layout: false
+# PART II
+
+## Application, Caveats, and Developments in ML
+
+
+.pull-left[
+
+### 3. [Where to Use ML?](#whereML1)
+  - [Prediction](#whereML1)
+  - [Targeting](#whereML2)
+  - [Measurement](#whereML3)
+  - [Heterogeneity](#whereML4)
+  - [Pre-analysis Plans](#whereML5)
+  
+### 4. [What Caveats Apply](#caveats1)
+  - [Ethics](#caveats1)
+  - [Opacity](#caveats2)
+  - [Model Complexity](#caveats3)
+  - [Reproducibility](#caveats4)
+  - [Model Robustness](#caveats5)
+  - [Causality](#caveats6)
+  
+]
+
+.pull-right[
+  
+### 5. [Current Areas of Development](#develop1)
+  - [Prediction](#develop1)
+  - [Model Robustness](#develop2)
+  - [Causality and heterogeneity](#develop3)
+
+]
+
+
+
+---
+
+name: whereML1
+
+# 3. Where can ML be Put to Use?
+
+## A) Prediction
+
+
+---
+
+name: whereML2
+
+# 3. Where can ML be Put to Use?
+
+## B) Targeting
+
+
+---
+
+name: whereML3
+
+# 3. Where can ML be Put to Use?
+
+## C) Measurement
+
+
+---
+
+name: whereML4
+
+# 3. Where can ML be Put to Use?
+
+## D) Hetereogeneity
+
+
+---
+
+name: whereML5
+
+# 3. Where can ML be Put to Use?
+
+## E) Pre-analysis Plans
+
+
+---
+
+name: caveats1
+
+# 4. What Caveats Apply?
+
+## A) Ethics
+
+SICSS slides
+
+
+---
+
+name: caveats2
+
+# 4. What Caveats Apply?
+
+## B) Opacity or explainability ("black box")
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-1-1.svg" style="display: block; margin: auto;" /&gt;
+
+[Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
+
+
+---
+
+name: caveats2a
+
+# 4. What Caveats Apply?
+
+## B) Opacity or explainability ("black box")
+
+### Two sides to this argument
+   
+1. **Opaque process**
++ De-bugging
+    
+2. **Prediction without regard of DGP**
++ Intelligibility
++ Trust
++ External validity
+    
+    
+- Literature: see, e.g., Ribeiro et al., 2016
+
+
+---
+
+name: caveats3
+
+# 4. What Caveats Apply?
+
+## C) Model Complexity
+
+### Many researcher degrees of freedom
+
+* Data pre-processing
+  + Example: Text analysis (libraries, tokenization, n-grams, etc.)
+
+* Regularization
+
+* Cross-validation
+
+
+
+---
+
+name: caveats4
+
+# 4. What Caveats Apply?
+
+## D) Reproducibility
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
+
+    Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
+    
+    
+---
+
+name: caveats4a
+
+# 4. What Caveats Apply?
+
+## D) Reproducibility
+
+### Encoding causal assumptions
+    
+* Testability detection via graphical representations (e.g., DAGs a la Pearl, 1995)
+    
+- LIterature: see, e.g. Dacrema et al., 2019; Dodge et al., 2019; McDermott et al., 2019; Mitchell et al., 2019.
+
+
+---
+
+name: caveats5
+
+# 4. What Caveats Apply?
+
+## E) Model Robustness or Adaptability
+
+### Problem
+    
+External validity and out-of-sample prediction
+1. Performance under changed environmental conditions]
+2. Adversarial attacks
+
+### Solutions
+    
+* Life-long maschine learning (Chen and Liu, 2016)
+* Transfer learning
+* Domain adaptation
+
+
+---
+
+name: caveats6
+
+# 4. What Caveats Apply
+
+## F) Causality
+
+    Selection-on-observables assumption with optimized set of control variables
+
+
+---
+
+name: caveatsX
+
+# XXXXXXXXXXXXXX
+
+## X) Selective Labels for the Tested
+
+
+
+---
+
+name: develop1
+
+# 5. Current Areas of Development
+
+## A) Re: Prediction
+
+
+---
+
+name: develop2
+
+# 5. Current Areas of Development
+
+## A) Re: Model Robustness
+
+
+---
+
+name: develop3
+
+# 5. Current Areas of Development
+
+## B) Re: Causality and Heterogeneous Treatment Effects
+
+
+
+
+---
+
+name: conclusion
+
+
+
+---
+
+name: extras
+
+# Additional Slides
+
+## Minimizing Statistical Loss
+
+Minimize empirical risk over space of functions (e.g., linear function, quadratic loss, neural networks, etc.):
+
+`\begin{equation}
+f ^ { * } = \arg \min _ { f \in \mathcal { H } } \frac { 1 } { n } \sum L \left( f \left( x _ { i } \right) , y _ { i } \right)
+\label{minloss}
+\end{equation}`
+
+Practical steps:
+* Choose type of loss function, e.g. quadratic `\(\left( f \left( x _ { i } \right) - y _ { i } \right) ^ { 2 }\)`
+* Choose starting point
+* Optimize using Stochastic Gradient Descent
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
