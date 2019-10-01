@@ -324,9 +324,13 @@ That is, $\min \{ \ell ( \alpha , \beta ) \}$.
 ```{r, echo=FALSE}
 library(png)
 library(grid)
-SGD <- readPNG("pics/SGD.png")
-grid.raster(SGD, x = unit(0.5, "npc"), y = unit(0.8, "npc"),width = 0.4, height = 0.4,)
+#imgpath <- system.file('pics/SGD.png',package='imager') 
+#SGD <- load.image(imgpath)
+SGD_2 <- readPNG("pics/SGD_2.png")
+#SGD = read.gif("pics/SGD_2.gif", frame=0, flip=FALSE, verbose=FALSE)
+grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.8, "npc"),width = 0.4, height = 0.4,)
 ```
+
 
 
 
