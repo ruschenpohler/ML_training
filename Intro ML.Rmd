@@ -216,13 +216,13 @@ name: standard
 
 ## An Inference Problem
 
-Given some set of predictors, we would like to predict an outcome: $\mathbb { E } \left[ v _ { i } | x _ { i } \right]$.
+Given some set of predictors, we would like to predict an outcome: $\mathbb { E } \left[ y_{i} | x_{i} \right]$.
 
-That is, what is $v _ { i }$ given $x _ { i }$?
+That is, what is $y_{i}$ given $x_{i}$?
 
 - Example:
-+ What impact does policy $x _ { i }$ have on outcome $v _ { i }$?
-+ Does predictor $x _ { i }$ influence behavior $v _ { i }$?
++ What impact does policy $x_{i}$ have on outcome $y_{i}$?
++ Does predictor $x_{i}$ influence behavior $y_{i}$?
 
 ### Practically, we have to:
 
@@ -258,10 +258,10 @@ $\rightarrow$
 
 .pull-right[
 
-$$V = \begin{bmatrix} 
-    v_{1,1} & v_{1,2} & \dots \\
+$$Y = \begin{bmatrix} 
+    y_{1,1} & y_{1,2} & \dots \\
     \vdots & \ddots & \\
-    v_{n,1} &        & v_{n,k} 
+    y_{n,1} &        & y_{n,k} 
     \end{bmatrix}$$
 ]
 
@@ -275,14 +275,19 @@ name: standard1
 
 ## 1. Link Function
 
-First, we need to link the predictors $x _ { i }$ to the outcome $v _ { i }$:
+First, we need to link the predictors $x_{i}$ to the outcome $y_{i}$:
 
-$$\mathbb { E } \left[ v _ { i } | x _ { i } \right] = f \left( \eta _ { i } \right)$$
+$$\mathbb { E } \left[ y_{i} | x_{i} \right] = f \left( \eta _ { i } \right)$$
 
-For simplicity, let $\eta _ { i }$ be a linear fct of $x _ { i }$:
+For simplicity, let $\eta_{i}$ be a linear fct of $x_{i}$:
 
-$$\eta _ { i } = \alpha + x _ { i } \beta$$
+$$\eta _ { i } = \alpha + x_{i} \beta$$
 
+That is, we assume that a straight line is a good approximation for the impact of $x_{i}$ on $y_{i}.
+
+But we still don't know **what straight line best approximates the relationship**!
+
+What does 
 
 ---
 name: standard2
@@ -295,11 +300,11 @@ Second, we need to define "best fit".
 
 Equivalent to saying, we need to minimize statistical loss $\ell ( \alpha , \beta )$
 
-Let the loss fct $\ell ( \alpha , \beta )$ be quadratic (as per "ordinary least **squares**"):
+Let the loss fct $\ell(\alpha,\beta)$ be quadratic (as per "ordinary least **squares**"):
 
-$$\ell ( \alpha , \beta ) = \sum _ {i=1} ^ {n} \left( v _ { i } - \eta _ { i } \right) ^ { 2 }$$
+$$\ell(\alpha,\beta) = \sum_{i=1} ^ {n} \left( y_{i} - \eta_{i} \right)^{2}$$
 
-That is, we consider the squared distance between our model $\eta_{i}$ and reality $v_{i}$.
+That is, we consider the squared distance between our model $\eta_{i}$ and reality $y_{i}$.
 
 ---
 name: standard3
@@ -308,7 +313,7 @@ name: standard3
 
 ## 3. Minimizing Statistical Loss (~Risk)
 
-Now, let's find the point at which $\ell ( \alpha , \beta )$ is smallest. That is, $\min \{ \ell ( \alpha , \beta ) \}$.
+Now, let's find the point at which $\ell(\alpha,\beta)$ is smallest. That is, $\min \{\ell(\alpha,\beta) \}$.
 
 ### Practically, we have to:
 
@@ -409,7 +414,7 @@ name: whatMLD
 
 Open question: **How to deal with high dimensionality in data?**
 
-Let's remember the loss fct: $\ell ( \alpha , \beta )$
+Let's remember the loss fct: $\ell(\alpha,\beta)$
 
 - However, now the set of potential predictors is too large!
 
@@ -417,11 +422,11 @@ To make the model less complex, we would like to select only the most important 
 
 Let's penalize model complexity:
 
-$$\min \left\{ \ell ( \alpha , \beta ) + n \lambda \sum _ { j = 1 } ^ { p } K _ { j } \left( \beta _ { j } \right) \right\}$$
+$$\min \left\{\ell(\alpha,\beta) + n \lambda \sum_{j=1}^{p} K_{j} \left (\beta_{j} \right) \right\}$$
 
 Shrinkage: $\lambda$ governs the magnitude of penalty or shrinkage.
 
-Regularization: $K _ { j } \left( \beta _ { j } \right)$ is a cost fct that defines the penalty regime
+Regularization: $K_{j} \left( \beta_{j} \right)$ is a cost fct that defines the penalty regime
 
 
 ---
@@ -460,10 +465,10 @@ $\rightarrow$
 
 .pull-right[
 
-$$V_{train} = \begin{bmatrix} 
-    v_{1,1} & v_{1,2} & \dots \\
+$$Y_{train} = \begin{bmatrix} 
+    y_{1,1} & y_{1,2} & \dots \\
     \vdots & \ddots & \\
-    v_{n,1} &        & v_{n,k} 
+    y_{n,1} &        & y_{n,k} 
     \end{bmatrix}$$
 ]
 
@@ -763,12 +768,12 @@ name: extras
 Minimize empirical risk over space of functions (e.g., linear function, quadratic loss, neural networks, etc.):
 
 \begin{equation}
-f ^ { * } = \arg \min _ { f \in \mathcal { H } } \frac { 1 } { n } \sum L \left( f \left( x _ { i } \right) , y _ { i } \right)
+f ^ {*} = \arg \min_{f \in \mathcal {H}} \frac {1} {n} \sum L \left( f \left( x_{i} \right) , y_{i} \right)
 \label{minloss}
 \end{equation}
 
 Practical steps:
-* Choose type of loss function, e.g. quadratic $\left( f \left( x _ { i } \right) - y _ { i } \right) ^ { 2 }$
+* Choose type of loss function, e.g. quadratic $\left( f \left( x_{i} \right) - y_{i} \right) ^ {2}$
 * Choose starting point
 * Optimize using Stochastic Gradient Descent
 
