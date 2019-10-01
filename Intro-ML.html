@@ -4,7 +4,7 @@
     <title>A Conceptual Introduction to ML</title>
     <meta charset="utf-8" />
     <meta name="author" content="Julius Ruschenpohler" />
-    <meta name="date" content="2019-09-30" />
+    <meta name="date" content="2019-10-01" />
     <link href="Intro-ML_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="Intro-ML_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="Intro-ML_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 # A Conceptual Introduction to ML
 ## Internal Presentation, CEGA
 ### Julius Ruschenpohler
-### 30 September 2019
+### 01 October 2019
 
 ---
 
@@ -30,8 +30,9 @@ class: inverse, middle
 .smaller[
 
 ### PART I
-1. Why Machine learning?
-2. What is the Intuition behind ML?
+1. Standard Regression Inference
+2. Why Machine learning?
+3. What is the Intuition behind ML?
  
 ]
 ]
@@ -40,7 +41,7 @@ class: inverse, middle
 .smaller[
   
 ### PART II
-3. Where to Can ML be put to Use?
+3. Where Can ML be Put to Use?
 4. What Caveats Apply?
 5. What are Current Areas of Development?
 
@@ -286,9 +287,27 @@ To make the model less complex, we would like to select only the most important 
 
 Let's penalize model complexity:
 
-`$$\min \left\{ \ell ( \alpha , \beta ) + n \lambda \sum _ { j = 1 } ^ { p } k _ { j } \left( \beta _ { j } \right) \right\}$$`
+`$$\min \left\{ \ell ( \alpha , \beta ) + n \lambda \sum _ { j = 1 } ^ { p } K _ { j } \left( \beta _ { j } \right) \right\}$$`
 
-`\(\lambda\)` 
+Shrinkage: `\(\lambda\)` governs the magnitude of penalty or shrinkage.
+
+Regularization: `\(K _ { j } \left( \beta _ { j } \right)\)` is a cost fct that defines the penalty regime
+
+
+---
+name: whatMLD1
+
+# 2. What is the Intuition behind ML?
+
+## D) Regularization or Penalized Regression
+
+### Types of cost fcts
+
+1. Ridge
+1. Lasso
+1. Elastic net
+1. Log
+
 
 ---
 name: whatMLE
@@ -344,7 +363,18 @@ name: whereML1
 
 # 3. Where can ML be Put to Use?
 
-## A) Prediction
+## A) Prediction and Measurement
+
+### Predicting Firm Performance from Surveys
+
+
+---
+
+name: whereML1a
+
+# 3. Where can ML be Put to Use?
+
+### Predicting Poverty from Satellite Images
 
 
 ---
@@ -362,7 +392,11 @@ name: whereML3
 
 # 3. Where can ML be Put to Use?
 
-## C) Measurement
+## C) Causality
+
+### Covariate selection through Regularization
+
+### Boosting Relevance of Instrumental Variables
 
 
 ---
@@ -373,6 +407,8 @@ name: whereML4
 
 ## D) Hetereogeneity
 
+### Optimal Selection of Heterogeneous Variables
+
 
 ---
 
@@ -381,6 +417,8 @@ name: whereML5
 # 3. Where can ML be Put to Use?
 
 ## E) Pre-analysis Plans
+
+### Decision Heuristics Based on ML
 
 
 ---
@@ -391,7 +429,7 @@ name: caveats1
 
 ## A) Ethics
 
-SICSS slides
+###
 
 
 ---
@@ -412,8 +450,6 @@ name: caveats2
 name: caveats2a
 
 # 4. What Caveats Apply?
-
-## B) Opacity or explainability ("black box")
 
 ### Two sides to this argument
    
@@ -442,7 +478,7 @@ name: caveats3
 * Data pre-processing
   + Example: Text analysis (libraries, tokenization, n-grams, etc.)
 
-* Regularization
+* Shrinkage and Regularization
 
 * Cross-validation
 
@@ -459,15 +495,13 @@ name: caveats4
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
-    
+
     
 ---
 
 name: caveats4a
 
 # 4. What Caveats Apply?
-
-## D) Reproducibility
 
 ### Encoding causal assumptions
     
@@ -505,16 +539,10 @@ name: caveats6
 
 ## F) Causality
 
-    Selection-on-observables assumption with optimized set of control variables
+### Selection-on-observables assumption 
+with optimized set of control variables
 
-
----
-
-name: caveatsX
-
-# XXXXXXXXXXXXXX
-
-## X) Selective Labels for the Tested
+### Selective Labels for the Tested
 
 
 

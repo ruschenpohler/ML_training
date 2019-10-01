@@ -26,8 +26,7 @@ p_load(
   kableExtra, snakecase, janitor,
   data.table, dplyr, estimatr,
   lubridate, knitr, parallel,
-  lfe,
-  here, magrittr
+  lfe, here, magrittr
 )
 # Define pink color
 red_pink <- "#e64173"
@@ -88,7 +87,7 @@ theme_axes_math <- theme_void() + theme(
   axis.title.y = element_text(vjust = .95, margin = margin(0, 0.15, 0, 0, unit = "lines")),
   axis.line = element_line(
     color = "grey70",
-    size = 0.265,
+    size = 0.25,
     arrow = arrow(angle = 30, length = unit(0.15, "inches")
   )),
   plot.margin = structure(c(1, 0, 1, 0), unit = "lines", valid.unit = 3L, class = "unit"),
@@ -158,9 +157,10 @@ tidy_table <- function(x, terms, highlight_row = 1, highlight_color = "black", h
 .smaller[
 
 ### PART I
-1. Why Machine learning?
-2. What is the Intuition behind ML?
-  
+1. Standard Regression Inference
+2. Why Machine learning?
+3. What is the Intuition behind ML?
+ 
 ]
 ]
 
@@ -168,7 +168,7 @@ tidy_table <- function(x, terms, highlight_row = 1, highlight_color = "black", h
 .smaller[
   
 ### PART II
-3. Where to Can ML be put to Use?
+3. Where Can ML be Put to Use?
 4. What Caveats Apply?
 5. What are Current Areas of Development?
 
@@ -239,7 +239,7 @@ That is, what is $v _ { i }$ given $x _ { i }$?
 **Can we make sense of this graphically?**
 
 ]
-
+9hn
 
 ---
 name: standardA_1
@@ -312,20 +312,20 @@ name: standard3
 
 ## 3. Minimizing Statistical Loss (~Risk)
 
-Now, let's find the point at which $\ell ( \alpha , \beta )$ is smallest:
+Now, let's find the point at which $\ell ( \alpha , \beta )$ is smallest.
 
-$$\min \{ \ell ( \alpha , \beta ) \}$$
+That is, $\min \{ \ell ( \alpha , \beta ) \}$.
 
 ### Practically, we have to:
 
 1. Choose a starting point
-1. Use Stochastic Gardient Descent to find minimum in iterative process
+1. Use Stochastic Gradient Descent to find minimum in iterative process
 
 ```{r, echo=FALSE}
 library(png)
 library(grid)
-blackbox <- readPNG("pics/SGD.png")
-grid.raster(SGD, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.75, height = 0.7,)
+SGD <- readPNG("pics/SGD.png")
+grid.raster(SGD, x = unit(0.5, "npc"), y = unit(0.8, "npc"),width = 0.4, height = 0.4,)
 ```
 
 
@@ -419,9 +419,27 @@ To make the model less complex, we would like to select only the most important 
 
 Let's penalize model complexity:
 
-$$\min \left\{ \ell ( \alpha , \beta ) + n \lambda \sum _ { j = 1 } ^ { p } k _ { j } \left( \beta _ { j } \right) \right\}$$
+$$\min \left\{ \ell ( \alpha , \beta ) + n \lambda \sum _ { j = 1 } ^ { p } K _ { j } \left( \beta _ { j } \right) \right\}$$
 
-$\lambda$ 
+Shrinkage: $\lambda$ governs the magnitude of penalty or shrinkage.
+
+Regularization: $K _ { j } \left( \beta _ { j } \right)$ is a cost fct that defines the penalty regime
+
+
+---
+name: whatMLD1
+
+# 2. What is the Intuition behind ML?
+
+## D) Regularization or Penalized Regression
+
+### Types of cost fcts
+
+1. Ridge
+1. Lasso
+1. Elastic net
+1. Log
+
 
 ---
 name: whatMLE
@@ -477,7 +495,18 @@ name: whereML1
 
 # 3. Where can ML be Put to Use?
 
-## A) Prediction
+## A) Prediction and Measurement
+
+### Predicting Firm Performance from Surveys
+
+
+---
+
+name: whereML1a
+
+# 3. Where can ML be Put to Use?
+
+### Predicting Poverty from Satellite Images
 
 
 ---
@@ -495,7 +524,11 @@ name: whereML3
 
 # 3. Where can ML be Put to Use?
 
-## C) Measurement
+## C) Causality
+
+### Covariate selection through Regularization
+
+### Boosting Relevance of Instrumental Variables
 
 
 ---
@@ -506,6 +539,8 @@ name: whereML4
 
 ## D) Hetereogeneity
 
+### Optimal Selection of Heterogeneous Variables
+
 
 ---
 
@@ -514,6 +549,8 @@ name: whereML5
 # 3. Where can ML be Put to Use?
 
 ## E) Pre-analysis Plans
+
+### Decision Heuristics Based on ML
 
 
 ---
@@ -524,7 +561,7 @@ name: caveats1
 
 ## A) Ethics
 
-SICSS slides
+###
 
 
 ---
@@ -550,8 +587,6 @@ grid.raster(blackbox, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.75, h
 name: caveats2a
 
 # 4. What Caveats Apply?
-
-## B) Opacity or explainability ("black box")
 
 ### Two sides to this argument
    
@@ -580,7 +615,7 @@ name: caveats3
 * Data pre-processing
   + Example: Text analysis (libraries, tokenization, n-grams, etc.)
 
-* Regularization
+* Shrinkage and Regularization
 
 * Cross-validation
 
@@ -602,15 +637,13 @@ grid.raster(repro, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.7, heigh
 ```
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
-    
+
     
 ---
 
 name: caveats4a
 
 # 4. What Caveats Apply?
-
-## D) Reproducibility
 
 ### Encoding causal assumptions
     
@@ -648,16 +681,10 @@ name: caveats6
 
 ## F) Causality
 
-    Selection-on-observables assumption with optimized set of control variables
+### Selection-on-observables assumption 
+with optimized set of control variables
 
-
----
-
-name: caveatsX
-
-# XXXXXXXXXXXXXX
-
-## X) Selective Labels for the Tested
+### Selective Labels for the Tested
 
 
 
