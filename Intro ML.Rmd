@@ -156,10 +156,10 @@ tidy_table <- function(x, terms, highlight_row = 1, highlight_color = "black", h
 .pull-left[
 .smaller[
 
-### PART I
-1. Standard Regression Inference
-2. Why Machine learning?
-3. What is the Intuition behind ML?
+### FIRST PART
+I. Standard Regression Inference
+II. Why Machine learning?
+III. What is the Intuition behind ML?
  
 ]
 ]
@@ -167,10 +167,10 @@ tidy_table <- function(x, terms, highlight_row = 1, highlight_color = "black", h
 .pull-right[
 .smaller[
   
-### PART II
-3. Where Can ML be Put to Use?
-4. What Caveats Apply?
-5. What are Current Areas of Development?
+### SECOND PART
+IV. Where Can ML be Put to Use?
+V. What Caveats Apply?
+VI. What Are Current Areas of Development?
 
 ]
 ]
@@ -178,14 +178,14 @@ tidy_table <- function(x, terms, highlight_row = 1, highlight_color = "black", h
 ---
 
 layout: false
-# PART I
+# FIRST PART
 
 ## Machine Learning: Why and How?
 
 
 .pull-left[
 
-### 1. [Standard Regression Inference](#standard)
+### I. [Standard Regression Inference](#standard)
   - [An Inference Problem](#standard)
   - [Link Function](#standard1)
   - [Loss Function](#standard2)
@@ -195,12 +195,12 @@ layout: false
 
 .pull-right[
 
-### 2. [Why Machine Learning](#whyMLA)
+### II. [Why Machine Learning](#whyMLA)
   - [High Dimensionality](#whyMLA)
   - [Prediction vs. Causal Inference](#whyMLB)
   - [Bias-variance Trade-off](#whyMLC)
   
-### 3. [What is the Intuition behind ML?](#whatMLA)
+### III. [What is the Intuition behind ML?](#whatMLA)
   - [Goal of Machine Learning](#whatMLA)
   - [Supervised vs. Unsupervised Learning](#whatMLB)
   - [Regularization](#whatMLC)
@@ -212,39 +212,36 @@ layout: false
 ---
 name: standard
 
-# 1. Standard Regression Inference
+# I. Standard Regression Inference
 
 ## An Inference Problem
 
-Given some set of predictors, we would like to predict an outcome:
-
-$$\mathbb { E } \left[ v _ { i } | x _ { i } \right]$$
+Given some set of predictors, we would like to predict an outcome: $\mathbb { E } \left[ v _ { i } | x _ { i } \right]$.
 
 That is, what is $v _ { i }$ given $x _ { i }$?
 
-- Example?
+- Example:
++ What impact does policy $x _ { i }$ have on outcome $v _ { i }$?
++ Does predictor $x _ { i }$ influence behavior $v _ { i }$?
 
 ### Practically, we have to:
 
 .pull-left[
 
 1. Link predictors to outcome (link fct)
-1. Define best fit (loss fct)
-1. Maximize best fit
-
+1. Define best fit criteria (loss fct)
+1. Maximize fit
 ]
 
 .pull-right[
 
-**Can we make sense of this graphically?**
-
+**Can we make <br/> sense of this <br/> graphically?**
 ]
-9hn
 
 ---
 name: standardA_1
 
-# 1. Standard Regression Inference
+# I. Standard Regression Inference
 
 ### Graphical Illustration
 
@@ -266,7 +263,6 @@ $$V = \begin{bmatrix}
     \vdots & \ddots & \\
     v_{n,1} &        & v_{n,k} 
     \end{bmatrix}$$
-
 ]
 
 How to go 
@@ -275,7 +271,7 @@ How to go
 ---
 name: standard1
 
-# 1. Standard Regression Inference
+# I. Standard Regression Inference
 
 ## 1. Link Function
 
@@ -291,7 +287,7 @@ $$\eta _ { i } = \alpha + x _ { i } \beta$$
 ---
 name: standard2
 
-# 1. Standard Regression Inference
+# I. Standard Regression Inference
 
 ## 2. Loss Function
 
@@ -308,13 +304,11 @@ That is, we consider the squared distance between our model $\eta_{i}$ and reali
 ---
 name: standard3
 
-# 1. Standard Regression Inference
+# I. Standard Regression Inference
 
 ## 3. Minimizing Statistical Loss (~Risk)
 
-Now, let's find the point at which $\ell ( \alpha , \beta )$ is smallest.
-
-That is, $\min \{ \ell ( \alpha , \beta ) \}$.
+Now, let's find the point at which $\ell ( \alpha , \beta )$ is smallest. That is, $\min \{ \ell ( \alpha , \beta ) \}$.
 
 ### Practically, we have to:
 
@@ -328,7 +322,7 @@ library(grid)
 #SGD <- load.image(imgpath)
 SGD_2 <- readPNG("pics/SGD_2.png")
 #SGD = read.gif("pics/SGD_2.gif", frame=0, flip=FALSE, verbose=FALSE)
-grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.8, "npc"),width = 0.4, height = 0.4,)
+grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.75, "npc"),width = 0.5, height = 0.5,)
 ```
 
 
@@ -337,7 +331,7 @@ grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.8, "npc"),width = 0.4, heigh
 ---
 name: whyMLB
 
-# 1. Why Machine Learning?
+# II. Why Machine Learning?
 
 ## B) High Dimensionality and Sparcity
 
@@ -345,7 +339,7 @@ name: whyMLB
 ---
 name: whyMLC
 
-# 1. Why Machine Learning?
+# II. Why Machine Learning?
 
 ## C) Prediction =/= Causal Inference
 Collinearity
@@ -354,7 +348,7 @@ Collinearity
 ---
 name: whyMLD
 
-# 1. Why Machine Learning?
+# II. Why Machine Learning?
 
 ## D) Bias-variance Trade-off
 
@@ -362,7 +356,7 @@ name: whyMLD
 ---
 name: whatMLA
 
-# 2. What is the Intuition behind ML?
+# III. What is the Intuition behind ML?
 
 ## A) Goal of Machine Learning
 
@@ -379,7 +373,7 @@ Identify optimal base vector to most efficiently describe data
 ---
 name: whatMLB
 
-# 2. What is the Intuition behind ML?
+# III. What is the Intuition behind ML?
 
 ## B) Supervised vs. Unsupervised ML
 
@@ -400,7 +394,7 @@ Classify data
 ---
 name: whatMLC
 
-# 2. What is the Intuition behind ML?
+# III. What is the Intuition behind ML?
 
 
 
@@ -409,9 +403,9 @@ name: whatMLC
 ---
 name: whatMLD
 
-# 2. What is the Intuition behind ML?
+# III. What is the Intuition behind ML?
 
-## D) Regularization or Penalized Regression
+## D) Penalized Regression
 
 Open question: **How to deal with high dimensionality in data?**
 
@@ -433,9 +427,9 @@ Regularization: $K _ { j } \left( \beta _ { j } \right)$ is a cost fct that defi
 ---
 name: whatMLD1
 
-# 2. What is the Intuition behind ML?
+# III. What is the Intuition behind ML?
 
-## D) Regularization or Penalized Regression
+## D) Penalized Regression
 
 ### Types of cost fcts
 
@@ -444,11 +438,41 @@ name: whatMLD1
 1. Elastic net
 1. Log
 
+But how much do we want to penalize complexity? 
+That is, **how to choose $\lambda$**?
+
+
+---
+name: whatMLD2
+
+# III. What is the Intuition behind ML?
+
+.pull-left[
+
+$$X_{train} = \begin{bmatrix} 
+    x_{1,1} & x_{1,2} & \dots \\
+    \vdots & \ddots & \\
+    x_{n,1} &        & x_{n,p} 
+    \end{bmatrix}$$
+]
+
+$\rightarrow$
+
+.pull-right[
+
+$$V_{train} = \begin{bmatrix} 
+    v_{1,1} & v_{1,2} & \dots \\
+    \vdots & \ddots & \\
+    v_{n,1} &        & v_{n,k} 
+    \end{bmatrix}$$
+]
+
+
 
 ---
 name: whatMLE
 
-# II. What is the Intuition behind ML?
+# III. What is the Intuition behind ML?
 
 ## E) Classification/Non-parametric Methods
 
@@ -458,21 +482,21 @@ name: whatMLE
 ---
 
 layout: false
-# PART II
+# SECOND PART
 
 ## Application, Caveats, and Developments in ML
 
 
 .pull-left[
 
-### 3. [Where to Use ML?](#whereML1)
+### IV. [Where to Use ML?](#whereML1)
   - [Prediction](#whereML1)
   - [Targeting](#whereML2)
   - [Measurement](#whereML3)
   - [Heterogeneity](#whereML4)
   - [Pre-analysis Plans](#whereML5)
   
-### 4. [What Caveats Apply](#caveats1)
+### V. [What Caveats Apply](#caveats1)
   - [Ethics](#caveats1)
   - [Opacity](#caveats2)
   - [Model Complexity](#caveats3)
@@ -484,7 +508,7 @@ layout: false
 
 .pull-right[
   
-### 5. [Current Areas of Development](#develop1)
+### VI. [Current Areas of Development](#develop1)
   - [Prediction](#develop1)
   - [Model Robustness](#develop2)
   - [Causality and heterogeneity](#develop3)
@@ -497,7 +521,7 @@ layout: false
 
 name: whereML1
 
-# 3. Where can ML be Put to Use?
+# IV. Where can ML be Put to Use?
 
 ## A) Prediction and Measurement
 
@@ -508,7 +532,7 @@ name: whereML1
 
 name: whereML1a
 
-# 3. Where can ML be Put to Use?
+# IV. Where can ML be Put to Use?
 
 ### Predicting Poverty from Satellite Images
 
@@ -517,7 +541,7 @@ name: whereML1a
 
 name: whereML2
 
-# 3. Where can ML be Put to Use?
+# IV. Where can ML be Put to Use?
 
 ## B) Targeting
 
@@ -526,7 +550,7 @@ name: whereML2
 
 name: whereML3
 
-# 3. Where can ML be Put to Use?
+# IV. Where can ML be Put to Use?
 
 ## C) Causality
 
@@ -539,7 +563,7 @@ name: whereML3
 
 name: whereML4
 
-# 3. Where can ML be Put to Use?
+# IV. Where can ML be Put to Use?
 
 ## D) Hetereogeneity
 
@@ -550,7 +574,7 @@ name: whereML4
 
 name: whereML5
 
-# 3. Where can ML be Put to Use?
+# IV. Where can ML be Put to Use?
 
 ## E) Pre-analysis Plans
 
@@ -561,7 +585,7 @@ name: whereML5
 
 name: caveats1
 
-# 4. What Caveats Apply?
+# V. What Caveats Apply?
 
 ## A) Ethics
 
@@ -572,7 +596,7 @@ name: caveats1
 
 name: caveats2
 
-# 4. What Caveats Apply?
+# V. What Caveats Apply?
 
 ## B) Opacity or explainability ("black box")
 
@@ -590,7 +614,7 @@ grid.raster(blackbox, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.75, h
 
 name: caveats2a
 
-# 4. What Caveats Apply?
+# V. What Caveats Apply?
 
 ### Two sides to this argument
    
@@ -610,7 +634,7 @@ name: caveats2a
 
 name: caveats3
 
-# 4. What Caveats Apply?
+# V. What Caveats Apply?
 
 ## C) Model Complexity
 
@@ -629,7 +653,7 @@ name: caveats3
 
 name: caveats4
 
-# 4. What Caveats Apply?
+# V. What Caveats Apply?
 
 ## D) Reproducibility
 
@@ -647,7 +671,7 @@ grid.raster(repro, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.7, heigh
 
 name: caveats4a
 
-# 4. What Caveats Apply?
+# V. What Caveats Apply?
 
 ### Encoding causal assumptions
     
@@ -660,7 +684,7 @@ name: caveats4a
 
 name: caveats5
 
-# 4. What Caveats Apply?
+# V. What Caveats Apply?
 
 ## E) Model Robustness or Adaptability
 
@@ -681,7 +705,7 @@ External validity and out-of-sample prediction
 
 name: caveats6
 
-# 4. What Caveats Apply
+# V. What Caveats Apply
 
 ## F) Causality
 
@@ -696,7 +720,7 @@ with optimized set of control variables
 
 name: develop1
 
-# 5. Current Areas of Development
+# VI. Current Areas of Development
 
 ## A) Re: Prediction
 
@@ -705,7 +729,7 @@ name: develop1
 
 name: develop2
 
-# 5. Current Areas of Development
+# VI. Current Areas of Development
 
 ## A) Re: Model Robustness
 
@@ -714,7 +738,7 @@ name: develop2
 
 name: develop3
 
-# 5. Current Areas of Development
+# VI. Current Areas of Development
 
 ## B) Re: Causality and Heterogeneous Treatment Effects
 
@@ -725,6 +749,7 @@ name: develop3
 
 name: conclusion
 
+# Conclusion
 
 
 ---
