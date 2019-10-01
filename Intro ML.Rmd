@@ -88,7 +88,7 @@ theme_axes_math <- theme_void() + theme(
   axis.title.y = element_text(vjust = .95, margin = margin(0, 0.15, 0, 0, unit = "lines")),
   axis.line = element_line(
     color = "grey70",
-    size = 0.25,
+    size = 0.265,
     arrow = arrow(angle = 30, length = unit(0.15, "inches")
   )),
   plot.margin = structure(c(1, 0, 1, 0), unit = "lines", valid.unit = 3L, class = "unit"),

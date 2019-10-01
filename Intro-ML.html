@@ -32,7 +32,7 @@ class: inverse, middle
 ### PART I
 1. Why Machine learning?
 2. What is the Intuition behind ML?
-  
+ 
 ]
 ]
 
@@ -57,17 +57,22 @@ layout: false
 
 .pull-left[
 
-### 1. [Why Machine Learning](#whyMLA)
-  - [Standard OLS in Three Steps](#whyMLA)
-  - [High Dimensionality](#whyMLB)
-  - [Prediction vs. Causal Inference](#whyMLC)
-  - [Bias-variance Trade-off](#whyMLD)
+### 1. [Standard Regression Inference](#standard)
+  - [An Inference Problem](#standard)
+  - [Link Function](#standard1)
+  - [Loss Function](#standard2)
+  - [Minimizing Statistical Loss](#standard3)
   
 ]
 
 .pull-right[
+
+### 2. [Why Machine Learning](#whyMLA)
+  - [High Dimensionality](#whyMLA)
+  - [Prediction vs. Causal Inference](#whyMLB)
+  - [Bias-variance Trade-off](#whyMLC)
   
-### 2. [What is the Intuition behind ML?](#whatMLA)
+### 3. [What is the Intuition behind ML?](#whatMLA)
   - [Goal of Machine Learning](#whatMLA)
   - [Supervised vs. Unsupervised Learning](#whatMLB)
   - [Regularization](#whatMLC)
@@ -77,13 +82,11 @@ layout: false
 
 
 ---
-name: whyMLA
+name: standard
 
-# 1. Why Machine Learning?
+# 1. Standard Regression Inference
 
-## A) Standard OLS in Three Steps
-
-### An Inference Problem
+## An Inference Problem
 
 Given some set of predictors, we would like to predict an outcome:
 
@@ -108,21 +111,21 @@ That is, what is `\(v _ { i }\)` given `\(x _ { i }\)`?
 **Can we make sense of this graphically?**
 
 ]
-
+9hn
 
 ---
-name: whyMLA0
+name: standardA_1
 
-# 1. Why Machine Learning?
+# 1. Standard Regression Inference
 
-## A) Standard OLS in Three Steps
+### Graphical Illustration
 
 .pull-left[
 
 `$$X = \begin{bmatrix} 
-    x_{11} &amp; x_{12} &amp; \dots \\
+    x_{1,1} &amp; x_{1,2} &amp; \dots \\
     \vdots &amp; \ddots &amp; \\
-    x_{n1} &amp;        &amp; x_{np} 
+    x_{n,1} &amp;        &amp; x_{n,p} 
     \end{bmatrix}$$`
 ]
 
@@ -131,9 +134,9 @@ name: whyMLA0
 .pull-right[
 
 `$$V = \begin{bmatrix} 
-    v_{11} &amp; v_{12} &amp; \dots \\
+    v_{1,1} &amp; v_{1,2} &amp; \dots \\
     \vdots &amp; \ddots &amp; \\
-    v_{n1} &amp;        &amp; v_{nk} 
+    v_{n,1} &amp;        &amp; v_{n,k} 
     \end{bmatrix}$$`
 
 ]
@@ -142,13 +145,11 @@ How to go
 
 
 ---
-name: whyMLA1
+name: standard1
 
-# 1. Why Machine Learning?
+# 1. Standard Regression Inference
 
-## A) Standard OLS Case
-
-### 1. Link Function
+## 1. Link Function
 
 First, we need to link the predictors `\(x _ { i }\)` to the outcome `\(v _ { i }\)`:
 
@@ -160,11 +161,11 @@ For simplicity, let `\(\eta _ { i }\)` be a linear fct of `\(x _ { i }\)`:
 
 
 ---
-name: whyMLA2
+name: standard2
 
-# 1. Why Machine Learning?
+# 1. Standard Regression Inference
 
-### 2. Loss Function
+## 2. Loss Function
 
 Second, we need to define "best fit".
 
@@ -177,22 +178,23 @@ Let the loss fct `\(\ell ( \alpha , \beta )\)` be quadratic (as per "ordinary le
 That is, we consider the squared distance between our model `\(\eta_{i}\)` and reality `\(v_{i}\)`.
 
 ---
-name: whyMLA3
+name: standard3
 
-# 1. Why Machine Learning?
+# 1. Standard Regression Inference
 
-### 3. Minimizing Statistical Loss (~Risk)
+## 3. Minimizing Statistical Loss (~Risk)
 
-Now, let's find the point at which `\(\ell ( \alpha , \beta )\)` is smallest:
+Now, let's find the point at which `\(\ell ( \alpha , \beta )\)` is smallest.
 
-`$$\min \{ \ell ( \alpha , \beta ) \}$$`
+That is, `\(\min \{ \ell ( \alpha , \beta ) \}\)`.
 
 ### Practically, we have to:
 
 1. Choose a starting point
-1. Use Stochastic Gardient Descent to find minimum
+1. Use Stochastic Gradient Descent to find minimum in iterative process
 
-PICTURE
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-1-1.svg" style="display: block; margin: auto;" /&gt;
+
 
 
 ---
@@ -400,7 +402,7 @@ name: caveats2
 
 ## B) Opacity or explainability ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
 
 [Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -454,7 +456,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
     
