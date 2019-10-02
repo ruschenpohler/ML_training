@@ -4,7 +4,7 @@
     <title>A Conceptual Introduction to ML</title>
     <meta charset="utf-8" />
     <meta name="author" content="Julius Ruschenpohler" />
-    <meta name="date" content="2019-10-01" />
+    <meta name="date" content="2019-10-02" />
     <link href="Intro-ML_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="Intro-ML_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="Intro-ML_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 # A Conceptual Introduction to ML
 ## Internal Presentation, CEGA
 ### Julius Ruschenpohler
-### 01 October 2019
+### 02 October 2019
 
 ---
 
@@ -114,7 +114,7 @@ name: standardA_1
 
 # I. Standard Regression Inference
 
-### Graphical Illustration
+## 1. Link Function
 
 .pull-left[
 
@@ -142,31 +142,38 @@ Data on daily measures of blood pressure
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-1-1.svg" style="display: block; margin: auto;" /&gt;
 
-**Loss fct**:
-
-
-
 
 ---
 name: standard1
 
 # I. Standard Regression Inference
 
-## 1. Link Function
-
-First, we need to link the data on meat consumption with the data on blood pressure:
+In other words, we need a function that links meat consumption to blood pressure:
 
 `$$\mathbb { E } \left[ y_{i} | x_{i} \right] = f \left( \eta _ { i } \right)$$`
 
-Here, `\(\eta_{i}\)` is our model to predict blood pressure.
+Here, `\(\eta_{i}\)` is our model that predicts blood pressure.
 
 For simplicity, let blood pressure be a linear fct of meat consumption:
 
-`$$\eta _ { i } = \alpha + x_{i} \beta$$`
+.pull-left[
 
-That is, we assume that a straight line is a good approximation for the impact of meat consumption on blood pressure.
+&lt;br/&gt;
+&lt;br/&gt;
+
+`\(\eta _ { i } = \alpha + x_{i} \beta\)`
+
+&lt;br/&gt;
+&lt;br/&gt;
 
 But we still don't know **_what_ straight line best approximates the relationship**!
+]
+
+.pull-right[
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
 
 ---
 name: standard2
@@ -177,31 +184,33 @@ name: standard2
 
 Second, we need to define "best fit".
 
-Equivalent to saying we need to minimize statistical loss `\(\ell ( \alpha , \beta )\)`
+Equivalent to saying we need to minimize statistical loss `\(\ell ( \alpha , \beta )\)`.
 
-Let the loss fct `\(\ell(\alpha,\beta)\)` be quadratic (as per "ordinary least squares"):
+Can we make sense of this graphically?
 
-`$$\ell(\alpha,\beta) = \sum_{i=1} ^ {n} \left( y_{i} - \eta_{i} \right)^{2}$$`
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
 
-That is, we consider the squared distance between our model prediction `\(\eta_{i}\)` of blood pressure and real measures of blood pressure `\(y_{i}\)`.
 
-Now, **how to apply this criterion**?
 
 ---
-name: standard3
+name: standard2a
 
 # I. Standard Regression Inference
 
-## 3. Minimizing Statistical Loss (~Risk)
+With quadratic loss fct `\(\ell(\alpha,\beta)\)` (as per "ordinary least squares"), we have:
 
-Now, let's find the point at which `\(\ell(\alpha,\beta)\)` is smallest. That is, `\(\min \{\ell(\alpha,\beta) \}\)`.
+`$$\ell(\alpha,\beta) = \sum_{i=1} ^ {n} \left( y_{i} - \eta_{i} \right)^{2}$$`
+That is, we consider the squared distance between our model prediction `\(\eta_{i}\)` of blood pressure and real measures of blood pressure `\(y_{i}\)`.
 
-### Practically, we have to:
+This works great!
 
-1. Choose a starting point
-1. Use Stochastic Gradient Descent to find minimum in iterative process
+&lt;br/&gt;
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
+But what if we are not only interested in the effect of meat consumption?
+
+What if the **set of predictors is huge**?
+
+
 
 
 
@@ -213,9 +222,8 @@ name: whyMLB
 
 ## A) High Dimensionality and Sparcity
 
-But what if we are not only interested in the effect of meat consumption?
 
-What if the set of predictors is **huge**?
+
 
 
 
@@ -373,7 +381,7 @@ Split the sample in one training and **many test samples**
 
 ### 3. Leave-one-out cross-validation
 
-Split sample in as many sub-samples as there are observations
+Split sample in **as many sub-samples as there are observations**
 
 
 ---
@@ -507,7 +515,7 @@ name: caveats2
 
 ## B) Opacity or explainability ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
 
 [Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -559,7 +567,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
 
@@ -651,7 +659,7 @@ name: conclusion
 
 ---
 
-name: extras
+name: extras1
 
 # Additional Slides
 
@@ -665,9 +673,11 @@ f ^ {*} = \arg \min_{f \in \mathcal {H}} \frac {1} {n} \sum L \left( f \left( x_
 \end{equation}`
 
 Practical steps:
-* Choose type of loss function, e.g. quadratic `\(\left( f \left( x_{i} \right) - y_{i} \right) ^ {2}\)`
-* Choose starting point
-* Optimize using Stochastic Gradient Descent
+1. Choose type of loss function, e.g. quadratic `\(\left( f \left( x_{i} \right) - y_{i} \right) ^ {2}\)`
+1. Choose starting point
+1. Use Stochastic Gradient Descent to find minimum in iterative process
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

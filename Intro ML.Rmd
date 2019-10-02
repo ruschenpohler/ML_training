@@ -241,7 +241,7 @@ name: standardA_1
 
 # I. Standard Regression Inference
 
-### Graphical Illustration
+## 1. Link Function
 
 .pull-left[
 
@@ -274,31 +274,43 @@ fctForms <- readPNG("pics/fctForms.png")
 grid.raster(fctForms, x = unit(0.5, "npc"), y = unit(0.75, "npc"),width = 0.84, height = 0.4,)
 ```
 
-**Loss fct**:
-
-
-
 
 ---
 name: standard1
 
 # I. Standard Regression Inference
 
-## 1. Link Function
-
-First, we need to link the data on meat consumption with the data on blood pressure:
+In other words, we need a function that links meat consumption to blood pressure:
 
 $$\mathbb { E } \left[ y_{i} | x_{i} \right] = f \left( \eta _ { i } \right)$$
 
-Here, $\eta_{i}$ is our model to predict blood pressure.
+Here, $\eta_{i}$ is our model that predicts blood pressure.
 
 For simplicity, let blood pressure be a linear fct of meat consumption:
 
-$$\eta _ { i } = \alpha + x_{i} \beta$$
+.pull-left[
 
-That is, we assume that a straight line is a good approximation for the impact of meat consumption on blood pressure.
+<br/>
+<br/>
+
+$\eta _ { i } = \alpha + x_{i} \beta$
+
+<br/>
+<br/>
 
 But we still don't know **_what_ straight line best approximates the relationship**!
+]
+
+.pull-right[
+
+```{r, echo=FALSE}
+library(png)
+library(grid)
+linFctForm <- readPNG("pics/linFctForm.png")
+grid.raster(linFctForm, x = unit(0.5, "npc"), y = unit(0.55, "npc"),width = 0.75, height = 1,)
+```
+]
+
 
 ---
 name: standard2
@@ -309,36 +321,38 @@ name: standard2
 
 Second, we need to define "best fit".
 
-Equivalent to saying we need to minimize statistical loss $\ell ( \alpha , \beta )$
+Equivalent to saying we need to minimize statistical loss $\ell ( \alpha , \beta )$.
 
-Let the loss fct $\ell(\alpha,\beta)$ be quadratic (as per "ordinary least squares"):
+Can we make sense of this graphically?
 
-$$\ell(\alpha,\beta) = \sum_{i=1} ^ {n} \left( y_{i} - \eta_{i} \right)^{2}$$
+```{r, fig.width=6, fig.height=3.6, echo=FALSE}
+library(png)
+library(grid)
+leastSquares <- readPNG("pics/leastSquares.png")
+grid.raster(leastSquares, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
+```
 
-That is, we consider the squared distance between our model prediction $\eta_{i}$ of blood pressure and real measures of blood pressure $y_{i}$.
 
-Now, **how to apply this criterion**?
 
 ---
-name: standard3
+name: standard2a
 
 # I. Standard Regression Inference
 
-## 3. Minimizing Statistical Loss (~Risk)
+With quadratic loss fct $\ell(\alpha,\beta)$ (as per "ordinary least squares"), we have:
 
-Now, let's find the point at which $\ell(\alpha,\beta)$ is smallest. That is, $\min \{\ell(\alpha,\beta) \}$.
+$$\ell(\alpha,\beta) = \sum_{i=1} ^ {n} \left( y_{i} - \eta_{i} \right)^{2}$$
+That is, we consider the squared distance between our model prediction $\eta_{i}$ of blood pressure and real measures of blood pressure $y_{i}$.
 
-### Practically, we have to:
+This works great!
 
-1. Choose a starting point
-1. Use Stochastic Gradient Descent to find minimum in iterative process
+<br/>
 
-```{r, echo=FALSE}
-library(png)
-library(grid)
-SGD_2 <- readPNG("pics/SGD_2.png")
-grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.75, "npc"),width = 0.5, height = 0.5,)
-```
+But what if we are not only interested in the effect of meat consumption?
+
+What if the **set of predictors is huge**?
+
+
 
 
 
@@ -350,9 +364,8 @@ name: whyMLB
 
 ## A) High Dimensionality and Sparcity
 
-But what if we are not only interested in the effect of meat consumption?
 
-What if the set of predictors is **huge**?
+
 
 
 
@@ -510,7 +523,7 @@ Split the sample in one training and **many test samples**
 
 ### 3. Leave-one-out cross-validation
 
-Split sample in as many sub-samples as there are observations
+Split sample in **as many sub-samples as there are observations**
 
 
 ---
@@ -798,7 +811,7 @@ name: conclusion
 
 ---
 
-name: extras
+name: extras1
 
 # Additional Slides
 
@@ -812,8 +825,13 @@ f ^ {*} = \arg \min_{f \in \mathcal {H}} \frac {1} {n} \sum L \left( f \left( x_
 \end{equation}
 
 Practical steps:
-* Choose type of loss function, e.g. quadratic $\left( f \left( x_{i} \right) - y_{i} \right) ^ {2}$
-* Choose starting point
-* Optimize using Stochastic Gradient Descent
+1. Choose type of loss function, e.g. quadratic $\left( f \left( x_{i} \right) - y_{i} \right) ^ {2}$
+1. Choose starting point
+1. Use Stochastic Gradient Descent to find minimum in iterative process
 
-
+```{r, echo=FALSE}
+library(png)
+library(grid)
+SGD_2 <- readPNG("pics/SGD_2.png")
+grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.75, "npc"),width = 0.5, height = 0.5,)
+```
