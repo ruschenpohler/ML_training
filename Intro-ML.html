@@ -429,11 +429,10 @@ layout: false
 .pull-left[
 
 ### IV. [Where to Use ML?](#whereML1)
-  - [Prediction](#whereML1)
+  - [Prediction and Measurement](#whereML1)
   - [Targeting](#whereML2)
-  - [Measurement](#whereML3)
-  - [Heterogeneity](#whereML4)
-  - [Pre-analysis Plans](#whereML5)
+  - [Heterogeneity](#whereML3)
+  - [Pre-analysis Plans](#whereML4)
   
 ### V. [What Caveats Apply](#caveats1)
   - [Ethics](#caveats1)
@@ -464,11 +463,11 @@ name: whereML1
 
 ## A) Prediction and Measurement
 
-### Predicting Firm Performance (McKenzie &amp; Sansone, 2019)
+### Predicting Firm Performance (McKenzie &amp; Sansone, JDE 2019)
 
 Paper: "Predicting Entrepreneurial Success is Hard: Evidence from a Business Plan Competition in Nigeria"
 
-* YouWIN! business plan competition in Nigeria
+* YouWIN! **business plan competition** in Nigeria
 * Data from 1,000 winners and 1,000 losers, baseline and 3-yrs follow-up
 
 3 methods to predict entrepreneurial success:
@@ -479,7 +478,7 @@ Paper: "Predicting Entrepreneurial Success is Hard: Evidence from a Business Pla
 
 ---
 
-name: whereML1
+name: whereML1a
 
 # IV. Where can ML be Put to Use?
 
@@ -489,12 +488,33 @@ name: whereML1
 
 ---
 
-name: whereML1a
+name: whereML1b
 
 # IV. Where can ML be Put to Use?
 
-### Predicting Poverty from Satellite Images
+### Predicting Poverty (Blumenstock, Cadamuro, and On, Science 2015)
 
+Paper: "Predicting Poverty and Wealth from Mobile Phone Metadata"
+
++ Also helpful: Blumenstock (AEAPP, 2018) "Estimating Economic Characteristics with Phone Data"
+
+* Rwandan **mobile phone metadata** over a year (N=1,5M, calls, texts, mobility)
+* Follow-up **phone surveys** of geographically stratified random sample (n=856) on assets, housing, welfare
+* Authors ..
+  + .. use training sample to train and cross-validate a set of algorithms
+  + .. **predict wealth for test sample** (n~1.5M)
+
+
+Delete test sample Y matrix on ML slide!
+
+
+---
+
+name: whereML1c
+
+# IV. Where can ML be Put to Use?
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -559,7 +579,7 @@ name: caveats2
 
 ## B) Opacity or explainability ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
 
 [Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -611,7 +631,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
 
@@ -721,7 +741,7 @@ Practical steps:
 1. Choose starting point
 1. Use Stochastic Gradient Descent to find minimum in iterative process
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
