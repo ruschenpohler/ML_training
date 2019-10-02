@@ -639,7 +639,7 @@ name: whereML1b
 
 # IV. Where can ML be Put to Use?
 
-### Predicting Poverty (Blumenstock, Cadamuro, and On, Science 2015)
+### Predicting Poverty (Blumenstock et al., Science 2015)
 
 Paper: "Predicting Poverty and Wealth from Mobile Phone Metadata"
 
@@ -708,7 +708,24 @@ name: whereML3
 
 ## C) Causality
 
-### Covariate selection through Regularization
+### Covariate Selection through Regularization (Belloni et al., ReStud 2014)
+
+Paper: “Inference on Treatment Effects after Selection among High-Dimensional Controls”
+
+Scenario: Experimental study, high-dimensional data ($p_{large}>n$)
+Goal: Select set of predictors $p_{small}<n$
+
+“Double-selection procedure”:
+1. Use LASSO to select set of predictors for outcome $y_{i}$
+2. Use LASSO to select set of predictors for treatment assignment $d_{i}$
+3. Choose predictors in union of sets as control variables
+
+
+---
+
+name: whereML3a
+
+# IV. Where can ML be Put to Use?
 
 ### Boosting Relevance of Instrumental Variables
 
