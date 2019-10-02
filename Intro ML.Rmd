@@ -460,13 +460,18 @@ name: whatMLD1
 1. Log
 
 But how much do we want to penalize complexity? 
+
 That is, **how to choose $\lambda$**?
+
+We need to validate a chosen $\lambda$!
 
 
 ---
 name: whatMLD2
 
 # III. What is the Intuition behind ML?
+
+### 1. Training and Test Sample
 
 .pull-left[
 
@@ -475,9 +480,14 @@ $$X_{train} = \begin{bmatrix}
     \vdots & \ddots & \\
     x_{n,1} &        & x_{n,p} 
     \end{bmatrix}$$
+    
+$$X_{test} = \begin{bmatrix} 
+    x_{1,1} & x_{1,2} & \dots \\
+    \vdots & \ddots & \\
+    x_{n,1} &        & x_{n,p} 
+    \end{bmatrix}$$
 ]
 
-$\rightarrow$
 
 .pull-right[
 
@@ -486,8 +496,17 @@ $$Y_{train} = \begin{bmatrix}
     \vdots & \ddots & \\
     y_{n,1} &        & y_{n,k} 
     \end{bmatrix}$$
+    
+$$Y_{test} = \begin{bmatrix} 
+    y_{1,1} & y_{1,2} & \dots \\
+    \vdots & \ddots & \\
+    y_{n,1} &        & y_{n,k} 
+    \end{bmatrix}$$
 ]
 
+### 2. K-fold cross-validation
+
+### 3. Leave-one-out cross-validation
 
 
 ---

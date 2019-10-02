@@ -323,13 +323,18 @@ name: whatMLD1
 1. Log
 
 But how much do we want to penalize complexity? 
+
 That is, **how to choose `\(\lambda\)`**?
+
+We need to validate a chosen `\(\lambda\)`!
 
 
 ---
 name: whatMLD2
 
 # III. What is the Intuition behind ML?
+
+### 1. Training and Test Sample
 
 .pull-left[
 
@@ -338,9 +343,14 @@ name: whatMLD2
     \vdots &amp; \ddots &amp; \\
     x_{n,1} &amp;        &amp; x_{n,p} 
     \end{bmatrix}$$`
+    
+`$$X_{test} = \begin{bmatrix} 
+    x_{1,1} &amp; x_{1,2} &amp; \dots \\
+    \vdots &amp; \ddots &amp; \\
+    x_{n,1} &amp;        &amp; x_{n,p} 
+    \end{bmatrix}$$`
 ]
 
-`\(\rightarrow\)`
 
 .pull-right[
 
@@ -349,8 +359,17 @@ name: whatMLD2
     \vdots &amp; \ddots &amp; \\
     y_{n,1} &amp;        &amp; y_{n,k} 
     \end{bmatrix}$$`
+    
+`$$Y_{test} = \begin{bmatrix} 
+    y_{1,1} &amp; y_{1,2} &amp; \dots \\
+    \vdots &amp; \ddots &amp; \\
+    y_{n,1} &amp;        &amp; y_{n,k} 
+    \end{bmatrix}$$`
 ]
 
+### 2. K-fold cross-validation
+
+### 3. Leave-one-out cross-validation
 
 
 ---
