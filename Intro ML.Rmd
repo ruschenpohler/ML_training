@@ -267,7 +267,12 @@ $$Y = \begin{bmatrix}
 
 **Link fct**: What is the relationship that links meat consumption and blood pressure?
 
-PICTURE
+```{r, echo=FALSE}
+library(png)
+library(grid)
+fctForms <- readPNG("pics/fctForms.png")
+grid.raster(fctForms, x = unit(0.5, "npc"), y = unit(0.75, "npc"),width = 0.84, height = 0.4,)
+```
 
 **Loss fct**:
 
@@ -331,10 +336,7 @@ Now, let's find the point at which $\ell(\alpha,\beta)$ is smallest. That is, $\
 ```{r, echo=FALSE}
 library(png)
 library(grid)
-#imgpath <- system.file('pics/SGD.png',package='imager') 
-#SGD <- load.image(imgpath)
 SGD_2 <- readPNG("pics/SGD_2.png")
-#SGD = read.gif("pics/SGD_2.gif", frame=0, flip=FALSE, verbose=FALSE)
 grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.75, "npc"),width = 0.5, height = 0.5,)
 ```
 
@@ -346,7 +348,13 @@ name: whyMLB
 
 # II. Why Machine Learning?
 
-## B) High Dimensionality and Sparcity
+## A) High Dimensionality and Sparcity
+
+But what if we are not only interested in the effect of meat consumption?
+
+What if the set of predictors is **huge**?
+
+
 
 
 ---
@@ -354,7 +362,7 @@ name: whyMLC
 
 # II. Why Machine Learning?
 
-## C) Prediction =/= Causal Inference
+## B) Prediction =/= Causal Inference
 Collinearity
 
 
