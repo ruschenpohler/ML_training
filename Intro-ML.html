@@ -384,13 +384,38 @@ Split sample in **as many sub-samples as there are observations**
 
 
 ---
+name: whatMLD2
+
+# III. What is the Intuition behind ML?
+
+## Take-away
+
+&lt;br/&gt;
+
+In **high-dimensional environments**, we need to find ways to come up with **sparse models**.
+
+One way is to **penalize model complexity** as a part of the loss fct `\(\ell(\alpha,\beta)\)`.
+
+That is, we incorporate a **shrinkage** parameter `\(\lambda\)` and a **cost fct** `\(K_{j} \left (\beta_{j} \right)\)`.
+
+**Regularization** is the process of shrinking and selecting some parameters, but not others.
+
+**Cross-validation** techniques are a way to choose the optimal value for `\(\lambda\)`.
+
+That is, a value of `\(\lambda\)` such that our model **best predicts new data**.
+
+We call this data the **test sample**.
+
+
+
+---
 name: whatMLE
 
 # III. What is the Intuition behind ML?
 
 ## E) Classification/Non-parametric Methods
 
-
+SCRAP?
 
 
 ---
@@ -439,8 +464,28 @@ name: whereML1
 
 ## A) Prediction and Measurement
 
-### Predicting Firm Performance from Surveys
+### Predicting Firm Performance (McKenzie &amp; Sansone, 2019)
 
+Paper: "Predicting Entrepreneurial Success is Hard: Evidence from a Business Plan Competition in Nigeria"
+
+* YouWIN! business plan competition in Nigeria
+* Data from 1,000 winners and 1,000 losers, baseline and 3-yrs follow-up
+
+3 methods to predict entrepreneurial success:
+1. **Human judges** score business plans
+1. **Simple logistic regression models** by expert academics
+1. **Machine learning methods**, i.e. LASSO, Support vector machines (SVM), and Boosting
+
+
+---
+
+name: whereML1
+
+# IV. Where can ML be Put to Use?
+
+## A) Prediction and Measurement
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -514,7 +559,7 @@ name: caveats2
 
 ## B) Opacity or explainability ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
 
 [Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -566,7 +611,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
 
@@ -676,7 +721,7 @@ Practical steps:
 1. Choose starting point
 1. Use Stochastic Gradient Descent to find minimum in iterative process
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

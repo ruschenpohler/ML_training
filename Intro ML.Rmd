@@ -562,7 +562,7 @@ name: whatMLE
 
 ## E) Classification/Non-parametric Methods
 
-
+SCRAP?
 
 
 ---
@@ -611,8 +611,33 @@ name: whereML1
 
 ## A) Prediction and Measurement
 
-### Predicting Firm Performance from Surveys
+### Predicting Firm Performance (McKenzie & Sansone, 2019)
 
+Paper: "Predicting Entrepreneurial Success is Hard: Evidence from a Business Plan Competition in Nigeria"
+
+* YouWIN! business plan competition in Nigeria
+* Data from 1,000 winners and 1,000 losers, baseline and 3-yrs follow-up
+
+3 methods to predict entrepreneurial success:
+1. **Human judges** score business plans
+1. **Simple logistic regression models** by expert academics
+1. **Machine learning methods**, i.e. LASSO, Support vector machines (SVM), and Boosting
+
+
+---
+
+name: whereML1
+
+# IV. Where can ML be Put to Use?
+
+## A) Prediction and Measurement
+
+```{r, fig.width=8, fig.height=5, echo=FALSE}
+library(png)
+library(grid)
+McK_S <- readPNG("pics/McK&S2019_main.png")
+grid.raster(McK_S, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
+```
 
 ---
 
