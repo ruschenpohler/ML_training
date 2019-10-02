@@ -531,6 +531,31 @@ Split sample in **as many sub-samples as there are observations**
 
 
 ---
+name: whatMLD2
+
+# III. What is the Intuition behind ML?
+
+## Take-away
+
+<br/>
+
+In **high-dimensional environments**, we need to find ways to come up with **sparse models**.
+
+One way is to **penalize model complexity** as a part of the loss fct $\ell(\alpha,\beta)$.
+
+That is, we incorporate a **shrinkage** parameter $\lambda$ and a **cost fct** $K_{j} \left (\beta_{j} \right)$.
+
+**Regularization** is the process of shrinking and selecting some parameters, but not others.
+
+**Cross-validation** techniques are a way to choose the optimal value for $\lambda$.
+
+That is, a value of $\lambda$ such that our model **best predicts new data**.
+
+We call this data the **test sample**.
+
+
+
+---
 name: whatMLE
 
 # III. What is the Intuition behind ML?
