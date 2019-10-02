@@ -350,11 +350,9 @@ This works great!
 
 But what if we are not only interested in the effect of meat consumption?
 
-What if the **set of predictors is huge**?
+What if the **set of predictors $p$ is large**?
 
-
-
-
+**Potentially even: $p>n$**!
 
 
 ---
@@ -394,14 +392,11 @@ name: whatMLA
 
 ## A) Goal of Machine Learning
 
-### Variable Shrinkage and Selection
+Construct a sparse model $\eta$ from high-dimensional data
 
-Construct a function mapping features (~covariates) onto labels (~outcomes) that generalizes to new data
+Model $\eta_{i}$ predicts label $Y_{i}$ (=outcome) from a subset of features $X_{i}$ (=predictors)
 
-
-### Dimensionality Reduction
-
-Identify optimal base vector to most efficiently describe data
+Features $X_{i}$ need to be selected (or weighed) such that model $\eta$ best generalizes to new data
 
 
 ---
@@ -514,10 +509,10 @@ $$Y_{train} = \begin{bmatrix}
     y_{n,1} &        & y_{n,k} 
     \end{bmatrix}$$
     
-$$Y_{test} = \begin{bmatrix} 
-    y_{1,1} & y_{1,2} & \dots \\
+$$?_{test} = \begin{bmatrix} 
+    ?_{1,1} & ?_{1,2} & \dots \\
     \vdots & \ddots & \\
-    y_{n,1} &        & y_{n,k} 
+    ?_{n,1} &        & ?_{n,k} 
     \end{bmatrix}$$
 ]
 
@@ -657,9 +652,6 @@ Paper: "Predicting Poverty and Wealth from Mobile Phone Metadata"
   + .. **predict wealth for test sample** (n~1.5M)
 
 
-Delete test sample Y matrix on ML slide!
-
-
 ---
 
 name: whereML1c
@@ -669,9 +661,35 @@ name: whereML1c
 ```{r, fig.width=7.5, fig.height=5, echo=FALSE}
 library(png)
 library(grid)
-Blum <- readPNG("pics/B2015_distrib.png")
-grid.raster(Blum, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
+B_distrib <- readPNG("pics/B2015_distrib.png")
+grid.raster(B_distrib, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
 ```
+
+---
+
+name: whereML1d
+
+# IV. Where can ML be Put to Use?
+
+```{r, fig.width=9, fig.height=3, echo=FALSE}
+library(png)
+library(grid)
+B_val <- readPNG("pics/B2015_val.png")
+grid.raster(B_val, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
+```
+
+.pull-left[
+  
+**A**: Predicted wealth composite score
+]
+
+.pull-right[
+
+**B**: Actual wealth (Admin 2010, N=12,792 HHs)
+]
+
+
+**Prediction accuracy for asset ownership was 64 to 92 percent**!
 
 ---
 

@@ -208,11 +208,9 @@ This works great!
 
 But what if we are not only interested in the effect of meat consumption?
 
-What if the **set of predictors is huge**?
+What if the **set of predictors `\(p\)` is large**?
 
-
-
-
+**Potentially even: `\(p&gt;n\)`**!
 
 
 ---
@@ -252,14 +250,11 @@ name: whatMLA
 
 ## A) Goal of Machine Learning
 
-### Variable Shrinkage and Selection
+Construct a sparse model `\(\eta\)` from high-dimensional data
 
-Construct a function mapping features (~covariates) onto labels (~outcomes) that generalizes to new data
+Model `\(\eta_{i}\)` predicts label `\(Y_{i}\)` (=outcome) from a subset of features `\(X_{i}\)` (=predictors)
 
-
-### Dimensionality Reduction
-
-Identify optimal base vector to most efficiently describe data
+Features `\(X_{i}\)` need to be selected (or weighed) such that model `\(\eta\)` best generalizes to new data
 
 
 ---
@@ -367,10 +362,10 @@ name: whatMLD2
     y_{n,1} &amp;        &amp; y_{n,k} 
     \end{bmatrix}$$`
     
-`$$Y_{test} = \begin{bmatrix} 
-    y_{1,1} &amp; y_{1,2} &amp; \dots \\
+`$$?_{test} = \begin{bmatrix} 
+    ?_{1,1} &amp; ?_{1,2} &amp; \dots \\
     \vdots &amp; \ddots &amp; \\
-    y_{n,1} &amp;        &amp; y_{n,k} 
+    ?_{n,1} &amp;        &amp; ?_{n,k} 
     \end{bmatrix}$$`
 ]
 
@@ -505,9 +500,6 @@ Paper: "Predicting Poverty and Wealth from Mobile Phone Metadata"
   + .. **predict wealth for test sample** (n~1.5M)
 
 
-Delete test sample Y matrix on ML slide!
-
-
 ---
 
 name: whereML1c
@@ -515,6 +507,27 @@ name: whereML1c
 # IV. Where can ML be Put to Use?
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+name: whereML1d
+
+# IV. Where can ML be Put to Use?
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+
+.pull-left[
+  
+**A**: Predicted wealth composite score
+]
+
+.pull-right[
+
+**B**: Actual wealth (Admin 2010, N=12,792 HHs)
+]
+
+
+**Prediction accuracy for asset ownership was 64 to 92 percent**!
 
 ---
 
@@ -579,7 +592,7 @@ name: caveats2
 
 ## B) Opacity or explainability ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
 [Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -631,7 +644,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
 
@@ -741,7 +754,7 @@ Practical steps:
 1. Choose starting point
 1. Use Stochastic Gradient Descent to find minimum in iterative process
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
