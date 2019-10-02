@@ -506,7 +506,11 @@ $$Y_{test} = \begin{bmatrix}
 
 ### 2. K-fold cross-validation
 
+Split the sample in one training and **many test samples**
+
 ### 3. Leave-one-out cross-validation
+
+Split sample in as many sub-samples as there are observations
 
 
 ---
