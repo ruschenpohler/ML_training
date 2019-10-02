@@ -453,9 +453,9 @@ Let's penalize model complexity:
 
 $$\min \left\{\ell(\alpha,\beta) + n \lambda \sum_{j=1}^{p} K_{j} \left (\beta_{j} \right) \right\}$$
 
-Shrinkage: $\lambda$ governs the magnitude of penalty or shrinkage.
+**Shrinkage**: $\lambda$ governs the magnitude of penalty or shrinkage.
 
-Regularization: $K_{j} \left( \beta_{j} \right)$ is a cost fct that defines the penalty regime
+**Regularization**: $K_{j} \left( \beta_{j} \right)$ is a cost fct that defines the penalty regime
 
 
 ---
@@ -467,16 +467,20 @@ name: whatMLD1
 
 ### Types of cost fcts
 
-1. Ridge
-1. Lasso
-1. Elastic net
-1. Log
+```{r, fig.width=9, fig.height=2.5, echo=FALSE}
+library(png)
+library(grid)
+costFcts <- readPNG("pics/costFcts.png")
+grid.raster(costFcts, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
+```
 
-But how much do we want to penalize complexity? 
+Take-away: Different ways of penalizing model complexity.
 
-That is, **how to choose $\lambda$**?
+But **__how much__ do we want to penalize complexity**? 
 
-We need to validate a chosen $\lambda$!
+That is, how to choose $\lambda$? In other words, how do we validate a chosen $\lambda$?
+
+
 
 
 ---

@@ -311,9 +311,9 @@ Let's penalize model complexity:
 
 `$$\min \left\{\ell(\alpha,\beta) + n \lambda \sum_{j=1}^{p} K_{j} \left (\beta_{j} \right) \right\}$$`
 
-Shrinkage: `\(\lambda\)` governs the magnitude of penalty or shrinkage.
+**Shrinkage**: `\(\lambda\)` governs the magnitude of penalty or shrinkage.
 
-Regularization: `\(K_{j} \left( \beta_{j} \right)\)` is a cost fct that defines the penalty regime
+**Regularization**: `\(K_{j} \left( \beta_{j} \right)\)` is a cost fct that defines the penalty regime
 
 
 ---
@@ -325,16 +325,15 @@ name: whatMLD1
 
 ### Types of cost fcts
 
-1. Ridge
-1. Lasso
-1. Elastic net
-1. Log
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
 
-But how much do we want to penalize complexity? 
+Take-away: Different ways of penalizing model complexity.
 
-That is, **how to choose `\(\lambda\)`**?
+But **__how much__ do we want to penalize complexity**? 
 
-We need to validate a chosen `\(\lambda\)`!
+That is, how to choose `\(\lambda\)`? In other words, how do we validate a chosen `\(\lambda\)`?
+
+
 
 
 ---
@@ -515,7 +514,7 @@ name: caveats2
 
 ## B) Opacity or explainability ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
 
 [Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -567,7 +566,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
 
@@ -677,7 +676,7 @@ Practical steps:
 1. Choose starting point
 1. Use Stochastic Gradient Descent to find minimum in iterative process
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
