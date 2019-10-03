@@ -349,11 +349,13 @@ With quadratic loss fct $\ell(\alpha,\beta)$ (as per "ordinary least squares"), 
 $$\ell(\alpha,\beta) = \sum_{i=1} ^ {n} \left( y_{i} - \eta_{i} \right)^{2}$$
 That is, we consider the squared distance between our model prediction $\eta_{i}$ of blood pressure and real measures of blood pressure $y_{i}$.
 
-Now, all we need is to find the **straight line that minimizes $\ell(\alpha,\beta)$**.
+**Now, all we need is to find the straight line that minimizes $\ell(\alpha,\beta)$**.
 
 <br/>
 
 A process called Stochastic Gradient Descent does this for us!
+
+(Some details in [Additional Slides](#extras1))
 
 
 ---
@@ -548,12 +550,12 @@ $$?_{test} = \begin{bmatrix}
     \end{bmatrix}$$
 ]
 
-### 2. $k$-fold cross-validation
+### 2. $k$-fold Cross-validation
 
 Same principle in $k-1$ training and one test sub-samples (details in [Additional Slides](#extras2))
 
 
-### 3. Leave-one-out cross-validation
+### 3. Leave-one-out Cross-validation
 
 Split sample in as many sub-samples as there are observations
 
@@ -700,7 +702,7 @@ name: whereML1
 
 ### Predicting Firm Performance (McKenzie & Sansone, JDE 2019)
 
-Paper: "_Predicting Entrepreneurial Success is Hard: Evidence from a Business Plan Competition in Nigeria_"
+Paper: ["_Predicting Entrepreneurial Success is Hard: Evidence from a Business Plan Competition in Nigeria_"](https://www.sciencedirect.com/science/article/abs/pii/S0304387818305601?via%3Dihub) [(UNGATED)](https://openknowledge.worldbank.org/handle/10986/32160)
 
 * YouWIN! **business plan competition** in Nigeria
 * Data from 1,000 winners and 1,000 losers, baseline and 3-yrs follow-up
@@ -732,9 +734,9 @@ name: whereML1b
 
 ### Predicting Poverty (Blumenstock et al., Science 2015)
 
-Paper: "_Predicting Poverty and Wealth from Mobile Phone Metadata_"
+Paper: ["_Predicting Poverty and Wealth from Mobile Phone Metadata_"](https://science.sciencemag.org/content/350/6264/1073) [(UNGATED)](https://www.researchgate.net/publication/284766595_Predicting_poverty_and_wealth_from_mobile_phone_metadata)
 
-+ Also helpful: Blumenstock (AEAPP, 2018) "_Estimating Economic Characteristics with Phone Data_"
++ Also helpful: [Blumenstock (AEAPP, 2018)](https://www.aeaweb.org/articles?id=10.1257/pandp.20181033) [(UNGATED)](https://escholarship.org/uc/item/1g7866nq)
 
 * Rwandan **mobile phone metadata** over a year (N = 1,5M, calls, texts, mobility)
 * Follow-up **phone surveys** of geographically stratified random sample (n = 856) on assets, housing, welfare
@@ -793,7 +795,7 @@ name: whereML2
 
 ### Covariate Selection through Regularization (Belloni et al., ReStud 2014)
 
-Paper: “_Inference on Treatment Effects after Selection among High-Dimensional Controls_”
+Paper: [“_Inference on Treatment Effects after Selection among High-Dimensional Controls_”](https://academic.oup.com/restud/article/81/2/608/1523757/) [(UNGATED)](https://arxiv.org/abs/1201.0224)
 
 * Scenario: Experimental study with selection into take-up, high-dimensional data with $p>n$
 * Goal: Select set of predictors $p_{small}<n$
@@ -804,7 +806,7 @@ Paper: “_Inference on Treatment Effects after Selection among High-Dimensional
 1. Choose predictors in the union of sets as set of controls $x_{i}$
 
 * Similar literature: 
-  + Instrumental variables estimation (e.g., Spiess, 2017; Hartford et al., 2017)
+  + Instrumental variables estimation (e.g., [Spiess, 2017](https://scholar.harvard.edu/spiess/publications/applications-james-stein-shrinkage-ii-bias-reduction-instrumental-variable); [Hartford et al., 2017](http://proceedings.mlr.press/v70/hartford17a.html))
   
 
 ---
@@ -818,9 +820,9 @@ name: whereML3
 ### Predicting Treatment Heterogeneity
 
 Papers:
-  + Athey and Imbens(PNAS 2016) "_Recursive Partitioning for Heterogeneous Causal Effects_"
-  + Wagner and Athey (JASA 2017) "_Estimation and Inference of Heterogeneous Treatment Effects using Random Forests_"
-  + Davis and Heller (AER 2017) "_Using Causal Forests to Predict Treatment Heterogeneity_"
+  + [Athey and Imbens(PNAS 2016)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4941430/) [(UNGATED)](https://arxiv.org/abs/1504.01132)
+  + [Wagner and Athey (JASA 2017)](https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839) [(UNGATED)](https://arxiv.org/abs/1510.04342)
+  + [Davis and Heller (AEAPP 2017)](https://www.aeaweb.org/articles?id=10.1257/aer.p20171000) [(UNGATED)](https://ideas.repec.org/a/aea/aecrev/v107y2017i5p546-50.html)
   
 * **Random trees and random forests to select covariates for heterogeneous treatment estimation**
 
@@ -835,7 +837,7 @@ name: whereML5
 
 ### Analytical Choices Guided by ML (Ludwig et al., AEAPP 2019)
 
-Paper: "Augmenting Pre-analysis Plans with Machine Learning"
+Paper: ["Augmenting Pre-analysis Plans with Machine Learning"](https://www.aeaweb.org/articles?id=10.1257/pandp.20191070)
 
 * **Specificity conundrum**: Theory often speaks little to specific choices which PAPs require to prevent data mining (e.g. data aggregation, sub-groups, controls, fct forms)
 
@@ -925,7 +927,7 @@ name: caveats3
 ### Danger of Overfitting
 
 Model $\eta$ explains variation that is unique to training sample
-  + Lowers external validity
+* Lowers external validity
  
 $\rightarrow$ Bias-variance tradeoff
 
@@ -935,8 +937,7 @@ $\rightarrow$ Bias-variance tradeoff
   + Example: Text analysis (tokens, n-grams, libraries, etc.)
 * ML algorithm
 * Regularization parameters
-* Cross-validation methods/parameters
-* Etc.
+* Cross-validation methods/parameters, etc.
 
 
 ---
@@ -971,7 +972,7 @@ Potential solution: **Graphical representations**, such as DAGs (Pearl, 1995)
   + Encosing causal assumptions
   + Testability detection
     
-- Literature: e.g. Dacrema et al., 2019; Dodge et al., 2019; McDermott et al., 2019; Mitchell et al., 2019.
+- Literature: e.g. [Dacrema et al., 2019](https://arxiv.org/abs/1907.06902); [Dodge et al., 2019](https://arxiv.org/abs/1909.03004); [McDermott et al., 2019](https://arxiv.org/abs/1907.01463); [Mitchell et al., 2019](https://arxiv.org/abs/1810.03993).
 
 
 ---
@@ -994,7 +995,7 @@ External validity and out-of-sample prediction
 * Transfer learning
 * Domain adaptation
 
-* Literature: e.g., Chen and Liu, 2016
+* Literature: e.g., [Chen and Liu (2016)](https://www.cs.uic.edu/~liub/lifelong-machine-learning.html), [Shu and Zhu (2019)](https://arxiv.org/abs/1901.07152), [Bhagoji et al. (2017)](https://arxiv.org/abs/1704.02654)
 
 ---
 
@@ -1006,13 +1007,15 @@ name: caveats6
 
 ### Selection-on-observables assumption 
 
-Many ML papers are weak on identification side
-  + **Strong ignorability assumption** (with optimized set of control variables)
+Many ML papers are weak on the identification side
+  + **Strong ignorability assumption**
+  + Only difference: Optimized set of predictors drawing on the set of all measured predictors
 
 ### Selective Labels for the Tested
 
-Many big data sets represent a restricted universe
-  + Threat of **selection or collider bias**
+Many big data sets represent a non-representative universe
+  + Threat of **selection** or **collider bias**
+  + Example: Arrested offenders (in dataset) may be different from non-arrested offenders (not in dataset) with respect to the outcome in question
 
 
 ---
@@ -1037,6 +1040,24 @@ name: conclusion
 
 * ML toolkit and big data can be **complements to survey research**
 
+
+---
+
+name: lit
+
+# Useful Literature
+
+### General Literature
+* [Mullainathan and Spiess (2017)](https://www.aeaweb.org/articles?id=10.1257/jep.31.2.87)[(UNGATED)](https://scholar.harvard.edu/spiess/publications/machine-learning-applied-econometric-approach)
+* [Athey and Imbens (ARE 2019)](https://www.annualreviews.org/doi/full/10.1146/annurev-economics-080217-053433)[(UNGATED)](https://arxiv.org/abs/1903.10075)
+* [Varian (2014)](https://www.aeaweb.org/articles?id=10.1257/jep.28.2.3)[(UNGATED)](http://people.ischool.berkeley.edu/~hal/Papers/2013/ml.pdf)
+
+### Causal Inference
+* [Athey and Imbens (JEL 2017)](https://arxiv.org/pdf/1607.00699.pdf)[(UNGATED)](https://ideas.repec.org/a/aea/jecper/v31y2017i2p3-32.html)
+
+
+### Text Analysis
+* [Gentzkow, Kelly, and Taddy (JEL 2019)](https://www.aeaweb.org/articles?id=10.1257/jel.20181020)[(UNGATED)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2934001)
 
 
 ---
@@ -1081,7 +1102,7 @@ name: extras2
 
 # Additional Slides
 
-## $k$-fold cross-validation
+## $k$-fold Cross-validation
 
 <br/>
 
