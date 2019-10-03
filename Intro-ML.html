@@ -450,7 +450,7 @@ name: whereML1
 
 ### Predicting Firm Performance (McKenzie &amp; Sansone, JDE 2019)
 
-Paper: "Predicting Entrepreneurial Success is Hard: Evidence from a Business Plan Competition in Nigeria"
+Paper: "_Predicting Entrepreneurial Success is Hard: Evidence from a Business Plan Competition in Nigeria_"
 
 * YouWIN! **business plan competition** in Nigeria
 * Data from 1,000 winners and 1,000 losers, baseline and 3-yrs follow-up
@@ -479,9 +479,9 @@ name: whereML1b
 
 ### Predicting Poverty (Blumenstock et al., Science 2015)
 
-Paper: "Predicting Poverty and Wealth from Mobile Phone Metadata"
+Paper: "_Predicting Poverty and Wealth from Mobile Phone Metadata_"
 
-+ Also helpful: Blumenstock (AEAPP, 2018) "Estimating Economic Characteristics with Phone Data"
++ Also helpful: Blumenstock (AEAPP, 2018) "_Estimating Economic Characteristics with Phone Data_"
 
 * Rwandan **mobile phone metadata** over a year (N = 1,5M, calls, texts, mobility)
 * Follow-up **phone surveys** of geographically stratified random sample (n = 856) on assets, housing, welfare
@@ -538,7 +538,7 @@ name: whereML3
 
 ### Covariate Selection through Regularization (Belloni et al., ReStud 2014)
 
-Paper: “Inference on Treatment Effects after Selection among High-Dimensional Controls”
+Paper: “_Inference on Treatment Effects after Selection among High-Dimensional Controls_”
 
 * Scenario: Experimental study, high-dimensional data with `\(p&gt;n\)`
 * Goal: Select set of predictors `\(p_{small}&lt;n\)`
@@ -564,9 +564,9 @@ name: whereML4
 ### Predicting Treatment Heterogeneity
 
 Papers:
-  + Athey and Imbens(PNAS 2016) "Recursive Partitioning for Heterogeneous Causal Effects"
-  + Wagner and Athey (JASA 2017) "Estimation and Inference of Heterogeneous Treatment Effects using Random Forests"
-  + Davis and Heller (AER 2017) "Using Causal Forests to Predict Treatment Heterogeneity"
+  + Athey and Imbens(PNAS 2016) "_Recursive Partitioning for Heterogeneous Causal Effects_"
+  + Wagner and Athey (JASA 2017) "_Estimation and Inference of Heterogeneous Treatment Effects using Random Forests_"
+  + Davis and Heller (AER 2017) "_Using Causal Forests to Predict Treatment Heterogeneity_"
   
 * Random trees and random forests to select covariates to use for heterogeneous treatment estimation
 
@@ -640,14 +640,22 @@ name: caveats3
 
 ## C) Model Complexity
 
-### Many researcher degrees of freedom
+### Danger of Overfitting
+
+Model `\(\eta\)` explains variation that is unique to training sample
+  + Lowers external validity
+ 
+`\(\rightarrow\)` Bias-variance tradeoff
+
+### Many Researcher Degrees of Freedom
 
 * Data pre-processing
-  + Example: Text analysis (libraries, tokenization, n-grams, etc.)
+  + Example: Text analysis (tokens, n-grams, libraries, etc.)
+* ML algorithm
+* Regularization parameters
+* Cross-validation methods/parameters
+* Etc.
 
-* Shrinkage and Regularization
-
-* Cross-validation
 
 
 
