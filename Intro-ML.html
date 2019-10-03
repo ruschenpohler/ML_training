@@ -231,7 +231,7 @@ name: whyMLC
 
 # II. Why Machine Learning?
 
-## B) Prediction =/= Causal Inference
+## B) Prediction `\(\neq\)` Causal Inference
 Collinearity
 
 
@@ -252,7 +252,7 @@ name: whatMLA
 
 Construct a sparse model `\(\eta\)` from high-dimensional data
 
-Model `\(\eta_{i}\)` predicts label `\(Y_{i}\)` (=outcome) from a subset of features `\(X_{i}\)` (=predictors)
+Model `\(\eta_{i}\)` predicts label `\(Y_{i}\)` (=outcome) from a subset of features `\(X_{i}\)` (= predictors)
 
 Features `\(X_{i}\)` need to be selected (or weighed) such that model `\(\eta\)` best generalizes to new data
 
@@ -493,11 +493,11 @@ Paper: "Predicting Poverty and Wealth from Mobile Phone Metadata"
 
 + Also helpful: Blumenstock (AEAPP, 2018) "Estimating Economic Characteristics with Phone Data"
 
-* Rwandan **mobile phone metadata** over a year (N=1,5M, calls, texts, mobility)
-* Follow-up **phone surveys** of geographically stratified random sample (n=856) on assets, housing, welfare
+* Rwandan **mobile phone metadata** over a year (N = 1,5M, calls, texts, mobility)
+* Follow-up **phone surveys** of geographically stratified random sample (n = 856) on assets, housing, welfare
 * Authors ..
   + .. use training sample to train and cross-validate a set of algorithms
-  + .. **predict wealth for test sample** (n~1.5M)
+  + .. **predict wealth for test sample** (n `\(\approx\)` 1.5M)
 
 
 ---
@@ -523,7 +523,7 @@ name: whereML1d
 
 .pull-right[
 
-**B**: Actual wealth (Admin 2010, N=12,792 HHs)
+**B**: Actual wealth (Admin 2010, N = 12,792 HHs)
 ]
 
 
@@ -550,22 +550,16 @@ name: whereML3
 
 Paper: “Inference on Treatment Effects after Selection among High-Dimensional Controls”
 
-Scenario: Experimental study, high-dimensional data ($p_{large}&gt;n$)
-Goal: Select set of predictors `\(p_{small}&lt;n\)`
+* Scenario: Experimental study, high-dimensional data with `\(p_{large}&gt;n\)`
+* Goal: Select set of predictors `\(p_{small}&lt;n\)`
 
 “Double-selection procedure”:
 1. Use LASSO to select set of predictors for outcome `\(y_{i}\)`
 2. Use LASSO to select set of predictors for treatment assignment `\(d_{i}\)`
 3. Choose predictors in union of sets as control variables
 
+- Similar literature: Bias reduction in instrumental variables estimation (e.g., Spiess, 2017)
 
----
-
-name: whereML3a
-
-# IV. Where can ML be Put to Use?
-
-### Boosting Relevance of Instrumental Variables
 
 
 ---
