@@ -318,8 +318,6 @@ name: whatMLD1
 
 # III. What is the Intuition behind ML?
 
-## D) Penalized Regression
-
 ### Types of cost fcts
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
@@ -375,9 +373,7 @@ name: whatMLD2
 
 ### 2. `\(k\)`-fold cross-validation
 
-Same principle as training-test sample split
-
-(Details in [Additional Slides](#extras2))
+Same principle as training-test sample split (details in [Additional Slides](#extras2))
 
 
 ### 3. Leave-one-out cross-validation
@@ -407,6 +403,43 @@ Central issue: In **high-dimensional environments**, we need to find ways to com
 * We call this data the **test sample**, and data the model is fitted on the **training data**.
 
 
+---
+name: whatMLE1
+
+# III. What is the Intuition behind ML?
+
+
+## E) More complex ML algorithms
+
+* **Regression Trees**
+
+  + Iterative splits
+  + Pools observations into orthogonal sub-spaces over features
+  + Based on similarity in the label
+  + Criteria e.g. Gini
+
+* **Random Forests**
+
+  + Ensemble of regression trees that imposes randomness across trees
+
+* **Gradient Boosted Trees**
+
+  + Ensemble of regression trees that are iteratively fit to previous trees' residuals
+
+
+---
+name: whatMLE2
+
+# III. What is the Intuition behind ML?
+
+* **Neural Nets**
+
+  + Inter-connected nodes organized into layers (~structure of the brain)
+  + Signal passes through nodes which perform non-linear transformation on signal
+  + Resulting prediction is highly flexible
+  + Black box
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -474,7 +507,7 @@ name: whereML1a
 
 ## A) Prediction and Measurement
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -501,7 +534,7 @@ name: whereML1c
 
 # IV. Where can ML be Put to Use?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -509,7 +542,7 @@ name: whereML1d
 
 # IV. Where can ML be Put to Use?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
 .pull-left[
   
@@ -619,7 +652,7 @@ name: caveats2
 
 ## B) Opacity or explainability problem ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
 Link: [Hutson (2018a)](https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -680,7 +713,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
 
 Link: [Hutson (2018b)](https://science.sciencemag.org/content/359/6377/725)
 
@@ -794,7 +827,7 @@ Practical steps:
 1. Choose starting point
 1. Use Stochastic Gradient Descent to find minimum in iterative process
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
 
 
 ---

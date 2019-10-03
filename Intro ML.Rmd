@@ -460,8 +460,6 @@ name: whatMLD1
 
 # III. What is the Intuition behind ML?
 
-## D) Penalized Regression
-
 ### Types of cost fcts
 
 ```{r, fig.width=9, fig.height=2.5, echo=FALSE}
@@ -522,9 +520,7 @@ $$?_{test} = \begin{bmatrix}
 
 ### 2. $k$-fold cross-validation
 
-Same principle as training-test sample split
-
-(Details in [Additional Slides](#extras2))
+Same principle as training-test sample split (details in [Additional Slides](#extras2))
 
 
 ### 3. Leave-one-out cross-validation
@@ -554,6 +550,48 @@ Central issue: In **high-dimensional environments**, we need to find ways to com
 * We call this data the **test sample**, and data the model is fitted on the **training data**.
 
 
+---
+name: whatMLE1
+
+# III. What is the Intuition behind ML?
+
+
+## E) More complex ML algorithms
+
+* **Regression Trees**
+
+  + Iterative splits
+  + Pools observations into orthogonal sub-spaces over features
+  + Based on similarity in the label
+  + Criteria e.g. Gini
+
+* **Random Forests**
+
+  + Ensemble of regression trees that imposes randomness across trees
+
+* **Gradient Boosted Trees**
+
+  + Ensemble of regression trees that are iteratively fit to previous trees' residuals
+
+
+---
+name: whatMLE2
+
+# III. What is the Intuition behind ML?
+
+* **Neural Nets**
+
+  + Inter-connected nodes organized into layers (~structure of the brain)
+  + Signal passes through nodes which perform non-linear transformation on signal
+  + Resulting prediction is highly flexible
+  + Black box
+
+```{r, fig.width=6.5, fig.height=3.5, echo=FALSE}
+library(png)
+library(grid)
+neuralNet <- readPNG("pics/neuralNet.png")
+grid.raster(neuralNet, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
+```
 
 ---
 
