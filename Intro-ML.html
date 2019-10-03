@@ -31,7 +31,7 @@ class: inverse, middle
 
 ### FIRST PART
 I. Standard Regression Inference
-II. Why Machine learning?  
+II. Why Machine learning?   
 III. What is the Intuition behind ML?
  
 ]
@@ -70,14 +70,13 @@ layout: false
 ### II. [Why Machine Learning](#whyMLA)
   - [High Dimensionality](#whyMLA)
   - [Prediction vs. Causal Inference](#whyMLB)
-  - [Bias-variance Trade-off](#whyMLC)
   
 ### III. [What is the Intuition behind ML?](#whatMLA)
   - [Goal of Machine Learning](#whatMLA)
-  - [Penalized Regression](#whatMLB)
-  - [Supervised vs. Unsupervised Learning](#whatMLC)
-  - [More Complex ML Algorithms](#whatMLD)
-  - [Take-away](#whatMLE)
+  - [Regularization and Cross-validation](#whatMLB)
+  - [Bias-variance Tradeoff](#whatMLC)
+  - [Supervised vs. Unsupervised Learning](#whatMLD)
+  - [More Complex ML Algorithms](#whatMLE)
 
 ]
 
@@ -138,7 +137,7 @@ Data on daily measures of blood pressure
     \end{bmatrix}$$`
 ]
 
-**Link fct**: What is the relationship that links meat consumption and blood pressure?
+**Link fct**: All else equal, does meat consumption `\(x_{i}\)` predict blood pressure `\(y_{i}\)`?
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-1-1.svg" style="display: block; margin: auto;" /&gt;
 
@@ -186,7 +185,7 @@ Second, we need to define "best fit".
 
 Equivalent to saying we need to minimize statistical loss `\(\ell ( \alpha , \beta )\)`.
 
-Can we make sense of this graphically?
+Let's make sense of this graphically.
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
 
@@ -206,11 +205,11 @@ Now, all we need is to find the **straight line that minimizes `\(\ell(\alpha,\b
 
 &lt;br/&gt;
 
-Great, this works!
+A process called Stochastic Gradient Descent does this for us!
 
 
 ---
-name: whyMLB
+name: whyMLA
 
 # II. Why Machine Learning?
 
@@ -243,11 +242,11 @@ Potentially even: `\(p&gt;n\)`!
 
 &lt;br/&gt;
 
-We need ways to generate **sparse models** that predict well in **high-dimensional space** (~with many potential covariates).
+We need ways to generate **sparse models** that predict well in **high-dimensional space** (~many predictors).
 
 
 ---
-name: whyMLC
+name: whyMLB
 
 # II. Why Machine Learning?
 
@@ -267,12 +266,28 @@ name: whyMLC
 * Search for `\(\hat{y}\)`
 
 ---
+name: whyMLB1
+
+# II. Why Machine Learning?
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+
+Two covariates are highly (negatively) correlated
+* Confidence interval is elliptic
+* Cuts through both axes, but not the origin!
+* Hence: 
+  + **Cannot reject individual hypotheses** that `\(\beta\)`s are zero
+  + **Can reject hypothesis** of joint significance!
+
+
+---
 name: whatMLA
 
 # III. What is the Intuition behind ML?
 
 ## A) Goal of Machine Learning
 
+&lt;br/&gt;
 **Construct a sparse model `\(\eta\)` from high-dimensional data**
 
 Model `\(\eta_{i}\)` predicts label `\(Y_{i}\)` (=outcome) from a subset of features `\(X_{i}\)` (= predictors)
@@ -313,7 +328,7 @@ name: whatMLB1
 
 ### Types of cost fcts
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
 
 Take-away: Different ways of penalizing model complexity.
 
@@ -364,22 +379,22 @@ name: whatMLB2
 
 ### 2. `\(k\)`-fold cross-validation
 
-Same principle as training-test sample split (details in [Additional Slides](#extras2))
+Same principle in `\(k-1\)` training and one test sub-samples (details in [Additional Slides](#extras2))
 
 
 ### 3. Leave-one-out cross-validation
 
-Split sample in **as many sub-samples as there are observations**
+Split sample in as many sub-samples as there are observations
 
 
 ---
 name: whyMLC
 
-# II. Why Machine Learning?
+# II. What is the Intuition behind Machine Learning?
 
-## C) Bias-variance Trade-off
+## C) Bias-Variance Tradeoff
 
-
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 name: whatMLD
@@ -392,6 +407,8 @@ name: whatMLD
 
 Predict a label (~outcome)
 * Minimize some type of prediction error
+
+* All of the above is supervised machine learning!
 
 ### Unsupervised Machine Learning
 
@@ -427,7 +444,21 @@ name: whatMLE
 
 
 ---
-name: whatMLE
+name: whatMLE2
+
+# III. What is the Intuition behind ML?
+
+* **Neural Nets**
+
+  + Inter-connected nodes organized into layers (~structure of the brain)
+  + Signal passes through nodes which perform non-linear transformation on signal
+  + Resulting prediction is highly flexible
+  + Black box
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+name: whatMLF
 
 # III. What is the Intuition behind ML?
 
@@ -448,22 +479,6 @@ Central issue: In **high-dimensional environments**, we need to find ways to com
 * We call this data the **test sample**, and data the model is fitted on the **training data**.
 
 
-
-
----
-name: whatMLE2
-
-# III. What is the Intuition behind ML?
-
-* **Neural Nets**
-
-  + Inter-connected nodes organized into layers (~structure of the brain)
-  + Signal passes through nodes which perform non-linear transformation on signal
-  + Resulting prediction is highly flexible
-  + Black box
-
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
-
 ---
 
 layout: false
@@ -476,7 +491,7 @@ layout: false
 
 ### IV. [Where to Use ML?](#whereML1)
   - [Prediction and Measurement](#whereML1)
-  - [Targeting](#whereML2)
+  - [Causality](#whereML2)
   - [Heterogeneity](#whereML3)
   - [Pre-analysis Plans](#whereML4)
 ]
@@ -521,9 +536,7 @@ name: whereML1a
 
 # IV. Where can ML be Put to Use?
 
-## A) Prediction and Measurement
-
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -550,7 +563,7 @@ name: whereML1c
 
 # IV. Where can ML be Put to Use?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -558,7 +571,7 @@ name: whereML1d
 
 # IV. Where can ML be Put to Use?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
 
 .pull-left[
   
@@ -573,22 +586,14 @@ name: whereML1d
 
 **Prediction accuracy for asset ownership was 64 to 92 percent**!
 
+
 ---
 
 name: whereML2
 
 # IV. Where can ML be Put to Use?
 
-## B) Targeting
-
-
----
-
-name: whereML3
-
-# IV. Where can ML be Put to Use?
-
-## C) Causality
+## B) Causality
 
 ### Covariate Selection through Regularization (Belloni et al., ReStud 2014)
 
@@ -609,11 +614,11 @@ Paper: “_Inference on Treatment Effects after Selection among High-Dimensional
 
 ---
 
-name: whereML4
+name: whereML3
 
 # IV. Where can ML be Put to Use?
 
-## D) Hetereogeneity
+## C) Hetereogeneity
 
 ### Predicting Treatment Heterogeneity
 
@@ -668,7 +673,7 @@ name: caveats2
 
 ## B) Opacity or explainability problem ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
 
 Link: [Hutson (2018a)](https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -729,7 +734,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
 
 Link: [Hutson (2018b)](https://science.sciencemag.org/content/359/6377/725)
 
@@ -781,9 +786,14 @@ name: caveats6
 ## F) Causality
 
 ### Selection-on-observables assumption 
-with optimized set of control variables
+
+Many ML papers are weak on identification side
+  + **Strong ignorability assumption** (with optimized set of control variables)
 
 ### Selective Labels for the Tested
+
+Many big data sets represent a restricted universe
+  + Threat of **selection or collider bias**
 
 
 ---
@@ -791,6 +801,23 @@ with optimized set of control variables
 name: conclusion
 
 # Conclusion
+
+&lt;br/&gt;
+* ML toolkit very helpful in **prediction tasks**
+  + May or may not outcompete simpler models (see, Predicting Firm Performance)
+
+* ML toolkit **does not replace identification strategy** for causal inference tasks
+
+* Economists can best harness ML toolkit in **$\hat{y}$ problems** (but most our problems are `\(\hat{\beta}\)` problems)
+
+* **Model opaqueness** is an issue for de-bugging, transparency, and reproducibility
+
+* Big data behind ML may come with **selection issues** (see, Selective Labels)
+
+* Big data comes with **ethical issues**
+
+* ML toolkit and big data can be **complements to survey research**
+
 
 
 ---
@@ -821,7 +848,7 @@ name: extras1a
 # Additional Slides
 
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -837,7 +864,9 @@ name: extras2
 1. Split data into `\(k\)` sub-samples ("folds")
 1. Repeatedly fit model `\(\eta\)` on all but current fold
 1. Obtain fitted values of `\(y_{i}\)` for current fold
-1. Iteratively cycle through all folds to obtain outcome index of fitted values of `\(y_{i}\)` for all observations
+  + Iteratively cycle through all folds to obtain outcome index of fitted values of `\(y_{i}\)` for all observations
+  
+  [Back to cross-validation slide](#whatMLB2)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
