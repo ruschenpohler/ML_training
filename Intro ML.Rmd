@@ -824,8 +824,6 @@ $\rightarrow$ Bias-variance tradeoff
 * Etc.
 
 
-
-
 ---
 
 name: caveats4
@@ -843,6 +841,7 @@ grid.raster(repro, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.7, heigh
 
     Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
 
+Model complexity has obvious implication for research transparency (and, by extension, reproducibility)
     
 ---
 
@@ -851,10 +850,12 @@ name: caveats4a
 # V. What Caveats Apply?
 
 ### Encoding causal assumptions
+
+* Potential solution: **Graphical representations**, such as DAGs (Pearl, 1995)
+  + Encosing causal assumptions
+  + Testability detection
     
-* Testability detection via graphical representations (e.g., DAGs a la Pearl, 1995)
-    
-- LIterature: see, e.g. Dacrema et al., 2019; Dodge et al., 2019; McDermott et al., 2019; Mitchell et al., 2019.
+- Literature: e.g. Dacrema et al., 2019; Dodge et al., 2019; McDermott et al., 2019; Mitchell et al., 2019.
 
 
 ---
