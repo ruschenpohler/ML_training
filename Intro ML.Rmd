@@ -350,9 +350,9 @@ This works great!
 
 But what if we are not only interested in the effect of meat consumption?
 
-What if the **set of predictors $p$ is large**?
+**What if the set of predictors $p$ is large**?
 
-**Potentially even: $p>n$**!
+Potentially even: $p>n$!
 
 
 ---
@@ -548,16 +548,6 @@ That is, a value of $\lambda$ such that our model **best predicts new data**.
 
 We call this data the **test sample**.
 
-
-
----
-name: whatMLE
-
-# III. What is the Intuition behind ML?
-
-## E) Classification/Non-parametric Methods
-
-SCRAP?
 
 
 ---
