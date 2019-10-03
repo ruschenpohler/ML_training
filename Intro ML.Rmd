@@ -990,6 +990,14 @@ Practical steps:
 1. Choose starting point
 1. Use Stochastic Gradient Descent to find minimum in iterative process
 
+
+---
+
+name: extras1a
+
+# Additional Slides
+
+
 ```{r, echo=FALSE}
 library(png)
 library(grid)
