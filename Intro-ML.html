@@ -74,8 +74,8 @@ layout: false
   
 ### III. [What is the Intuition behind ML?](#whatMLA)
   - [Goal of Machine Learning](#whatMLA)
-  - [Supervised vs. Unsupervised Learning](#whatMLB)
-  - [Regularization](#whatMLC)
+  - [Penalized Regression](#whatMLB)
+  - [Supervised vs. Unsupervised Learning](#whatMLC)
   - [More Complex ML Algorithms](#whatMLD)
   - [Take-away](#whatMLE)
 
@@ -246,27 +246,25 @@ Potentially even: `\(p&gt;n\)`!
 We need ways to generate **sparse models** that predict well in **high-dimensional space** (~with many potential covariates).
 
 
-
-
-
-
-
 ---
 name: whyMLC
 
 # II. Why Machine Learning?
 
 ## B) Prediction `\(\neq\)` Causal Inference
-Collinearity
 
+### Causal Inference
 
----
-name: whyMLD
+**Conditional covariances** (true data generating process)
+* Example: All else equal, does meat consumption `\(x_{i}\)` predict blood pressure `\(y_{i}\)`?
+* Search for `\(\hat{\beta}\)`
 
-# II. Why Machine Learning?
+### Prediction
 
-## D) Bias-variance Trade-off
-
+**Best prediction**
+* Example: What is the best prediction for blood pressure `\(y_{i}\)` given a large set of predictors `\(p_{large}\)`?
+* Origin: Face recognition
+* Search for `\(\hat{y}\)`
 
 ---
 name: whatMLA
@@ -289,48 +287,27 @@ name: whatMLB
 
 # III. What is the Intuition behind ML?
 
-## B) Supervised vs. Unsupervised ML
-
-### Supervised Machine Learning
-
-Predicting a label (~outcome)
-+ Minimizing some kind of prediction error
-
-### Unsupervised Machine Learning
-
-Classify data 
-+ Minimizing misclassification
-
-
-- This presentation focusses on supervised ML.
-
-
----
-name: whatMLC
-
-# III. What is the Intuition behind ML?
-
-## C) Penalized Regression
+## B) Penalized Regression or Regularization
 
 Open question: **How to deal with high dimensionality in data?**
 
 Let's remember the loss fct: `\(\ell(\alpha,\beta)\)`
 
-- However, now the set of potential predictors is too large!
+* However, now the set of potential predictors is large!
 
-To make the model less complex, we would like to select only the most important predictors.
+To make the model less complex, we would like to select only the most important predictors ("regularization").
 
 Let's penalize model complexity:
 
 `$$\min \left\{\ell(\alpha,\beta) + n \lambda \sum_{j=1}^{p} K_{j} \left (\beta_{j} \right) \right\}$$`
 
-**Shrinkage**: `\(\lambda\)` governs the magnitude of penalty or shrinkage.
+**Cost fct**: `\(K_{j} \left( \beta_{j} \right)\)` is a cost fct that defines the penalty regime
 
-**Regularization**: `\(K_{j} \left( \beta_{j} \right)\)` is a cost fct that defines the penalty regime
+**Shrinkage**: `\(\lambda\)` governs the magnitude of penalty or shrinkage.
 
 
 ---
-name: whatMLD1
+name: whatMLB1
 
 # III. What is the Intuition behind ML?
 
@@ -347,10 +324,8 @@ But **__how much__ do we want to penalize complexity**?
 That is, how to choose `\(\lambda\)`? In other words, how do we validate a chosen `\(\lambda\)`?
 
 
-
-
 ---
-name: whatMLD2
+name: whatMLB2
 
 # III. What is the Intuition behind ML?
 
@@ -398,12 +373,42 @@ Split sample in **as many sub-samples as there are observations**
 
 
 ---
+name: whyMLC
+
+# II. Why Machine Learning?
+
+## C) Bias-variance Trade-off
+
+
+
+---
 name: whatMLD
 
 # III. What is the Intuition behind ML?
 
+## D) Supervised vs. Unsupervised ML
 
-## D) More Complex ML Algorithms
+### Supervised Machine Learning
+
+Predict a label (~outcome)
+* Minimize some type of prediction error
+
+### Unsupervised Machine Learning
+
+Classify data
+* Minimizing misclassification
+
+
+- This presentation focusses on supervised ML.
+
+
+---
+name: whatMLE
+
+# III. What is the Intuition behind ML?
+
+
+## E) More Complex ML Algorithms
 
 * **Regression Trees**
 
