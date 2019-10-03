@@ -615,11 +615,11 @@ name: caveats2
 
 # V. What Caveats Apply?
 
-## B) Opacity or explainability ("black box")
+## B) Opacity or explainability problem ("black box")
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
-[Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
+Link: [Hutson (2018a)](https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
 
 ---
@@ -629,17 +629,20 @@ name: caveats2a
 # V. What Caveats Apply?
 
 ### Two sides to this argument
-   
+
+Especially for more complex ML algorithms:
+ 
 1. **Opaque process**
-+ De-bugging
+  + De-bugging difficult
     
-2. **Prediction without regard of DGP**
-+ Intelligibility
-+ Trust
-+ External validity
+1. **Prediction without regard of DGP**
+  + Intelligibility?
+  + External validity?
+  + Fairness?
+  + Trust?
     
     
-- Literature: see, e.g., Ribeiro et al., 2016
+* Literature: e.g., Ribeiro et al., 2016
 
 
 ---
@@ -677,19 +680,20 @@ name: caveats4
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
-    Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
+Link: [Hutson (2018b)](https://science.sciencemag.org/content/359/6377/725)
 
-Model complexity has obvious implication for research transparency (and, by extension, reproducibility)
-    
+
 ---
 
 name: caveats4a
 
 # V. What Caveats Apply?
 
-### Encoding causal assumptions
+Model complexity has obvious implication for research transparency (and, by extension, reproducibility)
+  + ML algorithms may lend themselves to PAPs (see, [Augmented PAPs](#whereML5)) ..
+  + .. but **actual practice is a complicated social equilibrium** (incentivization, social norms, tipping points, etc.) 
 
-* Potential solution: **Graphical representations**, such as DAGs (Pearl, 1995)
+Potential solution: **Graphical representations**, such as DAGs (Pearl, 1995)
   + Encosing causal assumptions
   + Testability detection
     

@@ -777,16 +777,16 @@ name: caveats2
 
 # V. What Caveats Apply?
 
-## B) Opacity or explainability ("black box")
+## B) Opacity or explainability problem ("black box")
 
-```{r, echo=FALSE}
+```{r, fig.width= 9, fig.height= 5, echo=FALSE}
 library(png)
 library(grid)
 blackbox <- readPNG("pics/Sci_blackbox.png")
-grid.raster(blackbox, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.75, height = 0.7,)
+grid.raster(blackbox, x = unit(0.5, "npc"), y = unit(0.5, "npc"),width = 1, height = 1,)
 ```
 
-[Hutson, 2018a] (https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
+Link: [Hutson (2018a)](https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
 
 ---
@@ -796,17 +796,20 @@ name: caveats2a
 # V. What Caveats Apply?
 
 ### Two sides to this argument
-   
+
+Especially for more complex ML algorithms:
+ 
 1. **Opaque process**
-+ De-bugging
+  + De-bugging difficult
     
-2. **Prediction without regard of DGP**
-+ Intelligibility
-+ Trust
-+ External validity
+1. **Prediction without regard of DGP**
+  + Intelligibility?
+  + External validity?
+  + Fairness?
+  + Trust?
     
     
-- Literature: see, e.g., Ribeiro et al., 2016
+* Literature: e.g., Ribeiro et al., 2016
 
 
 ---
@@ -842,26 +845,27 @@ name: caveats4
 
 ## D) Reproducibility
 
-```{r, echo=FALSE}
+```{r, fig.width=9, fig.height=4.5, echo=FALSE}
 library(png)
 library(grid)
 repro <- readPNG("pics/Sci_Reproducibility.png")
-grid.raster(repro, x = unit(0.4, "npc"), y = unit(0.6, "npc"),width = 0.7, height = 0.45,)
+grid.raster(repro, x = unit(0.5, "npc"), y = unit(0.5, "npc"),width = 1, height = 1,)
 ```
 
-    Hutson, 2018b (https://science.sciencemag.org/content/359/6377/725)
+Link: [Hutson (2018b)](https://science.sciencemag.org/content/359/6377/725)
 
-Model complexity has obvious implication for research transparency (and, by extension, reproducibility)
-    
+
 ---
 
 name: caveats4a
 
 # V. What Caveats Apply?
 
-### Encoding causal assumptions
+Model complexity has obvious implication for research transparency (and, by extension, reproducibility)
+  + ML algorithms may lend themselves to PAPs (see, [Augmented PAPs](#whereML5)) ..
+  + .. but **actual practice is a complicated social equilibrium** (incentivization, social norms, tipping points, etc.) 
 
-* Potential solution: **Graphical representations**, such as DAGs (Pearl, 1995)
+Potential solution: **Graphical representations**, such as DAGs (Pearl, 1995)
   + Encosing causal assumptions
   + Testability detection
     
@@ -964,7 +968,7 @@ Practical steps:
 library(png)
 library(grid)
 SGD_2 <- readPNG("pics/SGD_2.png")
-grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.75, "npc"),width = 0.5, height = 0.5,)
+grid.raster(SGD_2, x = unit(0.5, "npc"), y = unit(0.5, "npc"),width = 1, height = 1,)
 ```
 
 
