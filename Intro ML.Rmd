@@ -702,17 +702,18 @@ name: whereML3
 
 Paper: “Inference on Treatment Effects after Selection among High-Dimensional Controls”
 
-* Scenario: Experimental study, high-dimensional data with $p_{large}>n$
+* Scenario: Experimental study, high-dimensional data with $p>n$
 * Goal: Select set of predictors $p_{small}<n$
 
-“Double-selection procedure”:
-1. Use LASSO to select set of predictors for outcome $y_{i}$
-2. Use LASSO to select set of predictors for treatment assignment $d_{i}$
-3. Choose predictors in union of sets as control variables
+“**Double-selection procedure**”:
+1. Use LASSO to select set of predictors for ..
+  + .. outcome $y_{i}$
+  + .. treatment assignment $d_{i}$
+1. Choose predictors in the union of sets as control variables
 
-- Similar literature: Bias reduction in instrumental variables estimation (e.g., Spiess, 2017)
-
-
+* Similar literature: 
+  + Instrumental variables estimation (e.g., Spiess, 2017; Hartford et al., 2017)
+  
 
 ---
 
