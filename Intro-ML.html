@@ -254,7 +254,7 @@ Construct a sparse model `\(\eta\)` from high-dimensional data
 
 Model `\(\eta_{i}\)` predicts label `\(Y_{i}\)` (=outcome) from a subset of features `\(X_{i}\)` (= predictors)
 
-Features `\(X_{i}\)` need to be selected (or weighed) such that model `\(\eta\)` best generalizes to new data
+Features `\(X_{i}\)` need to be selected (or weighed) such that model `\(\eta\)` best generalizes to new data ("out of sample")
 
 
 ---
@@ -324,6 +324,8 @@ name: whatMLD1
 
 Take-away: Different ways of penalizing model complexity.
 
+&lt;br/&gt;
+
 But **__how much__ do we want to penalize complexity**? 
 
 That is, how to choose `\(\lambda\)`? In other words, how do we validate a chosen `\(\lambda\)`?
@@ -387,7 +389,7 @@ name: whatMLD2
 
 &lt;br/&gt;
 
-Central issue: In **high-dimensional environments**, we need to find ways to come up with **sparse models** that predict outcomes well in **new data**.
+Central issue: In **high-dimensional environments**, we need to find ways to come up with **sparse models** that predict outcomes well **out of sample**.
 
 * One way is to **penalize model complexity** as a part of the loss fct `\(\ell(\alpha,\beta)\)`.
 
@@ -395,9 +397,7 @@ Central issue: In **high-dimensional environments**, we need to find ways to com
 
 * **Regularization** is the process of shrinking and selecting some parameters, but not others.
 
-* **Cross-validation** techniques are a way to choose the optimal value for `\(\lambda\)`.
-
-* That is, a value of `\(\lambda\)` such that our model **best predicts new data**.
+* **Cross-validation** techniques are a way to set `\(\lambda\)` such that our model `\(\eta\)` best predicts out of sample.
 
 * We call this data the **test sample**, and data the model is fitted on the **training data**.
 
