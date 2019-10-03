@@ -30,7 +30,7 @@ class: inverse, middle
 .smaller[
 
 ### FIRST PART
-I. Standard Regression Inference  
+I. Standard Regression Inference
 II. Why Machine learning?  
 III. What is the Intuition behind ML?
  
@@ -371,9 +371,12 @@ name: whatMLD2
     \end{bmatrix}$$`
 ]
 
-### 2. K-fold cross-validation
+### 2. `\(k\)`-fold cross-validation
 
-Split the sample in one training and **many test samples**
+Same principle as training-test sample split
+
+(Details in [Additional Slides](#extras2))
+
 
 ### 3. Leave-one-out cross-validation
 
@@ -579,13 +582,20 @@ name: whereML5
 
 ## E) Pre-analysis Plans
 
-### Decision Heuristics Based on ML (Ludwig et al., AEAPP 2019)
+### Analytical Choices Guided by ML (Ludwig et al., AEAPP 2019)
 
 Paper: "Augmenting Pre-analysis Plans with Machine Learning"
 
-*
-*
-*
+* **Specificity conundrum**: Theory often speaks little to specific choices which PAPs require to prevent data mining (e.g. data aggregation, sub-groups, controls, fct forms)
+
+* **Standard PAP**: Fully specifies entire set of analytical choices
+* **Pure ML PAP**:  Start with set of variables and make choices according to prediction problem
+* **Augmented PAP**: Take the best of both worlds
+
+Advantages:
+1. Benefits from ML flexibility with, at most, limited costs in power
+1. Limits the need of researchers to make arbitrary analytical choices
+1. Integrates ex-post analysis without risking p-hacking
 
 
 ---
@@ -779,6 +789,22 @@ Practical steps:
 1. Use Stochastic Gradient Descent to find minimum in iterative process
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+name: extras2
+
+# Additional Slides
+
+## `\(k\)`-fold cross-validation
+
+&lt;br/&gt;
+
+1. Split data into `\(k\)` sub-samples ("folds")
+1. Repeatedly fit model `\(\eta\)` on all but current fold
+1. Obtain fitted values of `\(y_{i}\)` for current fold
+1. Iteratively cycle through all folds to obtain outcome index of fitted values of `\(y_{i}\)` for all observations
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
