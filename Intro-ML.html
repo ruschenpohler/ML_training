@@ -202,15 +202,11 @@ With quadratic loss fct `\(\ell(\alpha,\beta)\)` (as per "ordinary least squares
 `$$\ell(\alpha,\beta) = \sum_{i=1} ^ {n} \left( y_{i} - \eta_{i} \right)^{2}$$`
 That is, we consider the squared distance between our model prediction `\(\eta_{i}\)` of blood pressure and real measures of blood pressure `\(y_{i}\)`.
 
-Now, all we need is to find the straight line that minimizes `\(\ell(\alpha,\beta)\)`.
+Now, all we need is to find the **straight line that minimizes `\(\ell(\alpha,\beta)\)`**.
 
 &lt;br/&gt;
 
-But what if we are not only interested in the effect of meat consumption?
-
-**What if the set of predictors `\(p\)` is large**?
-
-Potentially even: `\(p&gt;n\)`!
+Great, this works!
 
 
 ---
@@ -219,6 +215,35 @@ name: whyMLB
 # II. Why Machine Learning?
 
 ## A) High Dimensionality and Sparcity
+
+
+But what if we are not only interested in the effect of meat consumption?
+
+**What if the set of predictors `\(p\)` is large**?
+
+Potentially even: `\(p&gt;n\)`!
+
+.pull-left[
+
+`$$X = \begin{bmatrix} 
+    x_{1,1} &amp; x_{1,2} &amp; x_{1,3} &amp;x_{1,4} &amp; \dots \\
+    \vdots &amp; \ddots &amp; \\
+    x_{n&lt;p,1} &amp;        &amp;         &amp;    &amp; x_{n&lt;p,p_{large}} 
+    \end{bmatrix}$$`
+]
+
+.pull-right[
+
+`$$Y = \begin{bmatrix} 
+    y_{1,1} &amp; y_{1,2} &amp; \dots \\
+    \vdots &amp; \ddots &amp; \\
+    y_{n,1} &amp;          &amp; y_{n,p} 
+    \end{bmatrix}$$`
+]
+
+&lt;br/&gt;
+
+We need ways to generate **sparse models** that predict well in **high-dimensional space** (~with many potential covariates).
 
 
 
