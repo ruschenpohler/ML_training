@@ -42,8 +42,7 @@ III. What is the Intuition behind ML?
   
 ### SECOND PART
 IV. Where Can ML be Put to Use?  
-V. What Caveats Apply?  
-VI. What Are Current Areas of Development?
+V. What Caveats Apply?
 
 ]
 ]
@@ -77,7 +76,8 @@ layout: false
   - [Goal of Machine Learning](#whatMLA)
   - [Supervised vs. Unsupervised Learning](#whatMLB)
   - [Regularization](#whatMLC)
-  - [Classification](#whatMLD)
+  - [More Complex ML Algorithms](#whatMLD)
+  - [Take-away](#whatMLE)
 
 ]
 
@@ -285,16 +285,7 @@ name: whatMLC
 
 # III. What is the Intuition behind ML?
 
-
-
-
-
----
-name: whatMLD
-
-# III. What is the Intuition behind ML?
-
-## D) Penalized Regression
+## C) Penalized Regression
 
 Open question: **How to deal with high dimensionality in data?**
 
@@ -382,7 +373,31 @@ Split sample in **as many sub-samples as there are observations**
 
 
 ---
-name: whatMLD2
+name: whatMLD
+
+# III. What is the Intuition behind ML?
+
+
+## D) More Complex ML Algorithms
+
+* **Regression Trees**
+
+  + Iterative splits
+  + Pools observations into orthogonal sub-spaces over features
+  + Based on similarity in the label
+  + Criteria e.g. Gini
+
+* **Random Forests**
+
+  + Ensemble of regression trees that imposes randomness across trees
+
+* **Gradient Boosted Trees**
+
+  + Ensemble of regression trees that are iteratively fit to previous trees' residuals
+
+
+---
+name: whatMLE
 
 # III. What is the Intuition behind ML?
 
@@ -403,28 +418,6 @@ Central issue: In **high-dimensional environments**, we need to find ways to com
 * We call this data the **test sample**, and data the model is fitted on the **training data**.
 
 
----
-name: whatMLE1
-
-# III. What is the Intuition behind ML?
-
-
-## E) More complex ML algorithms
-
-* **Regression Trees**
-
-  + Iterative splits
-  + Pools observations into orthogonal sub-spaces over features
-  + Based on similarity in the label
-  + Criteria e.g. Gini
-
-* **Random Forests**
-
-  + Ensemble of regression trees that imposes randomness across trees
-
-* **Gradient Boosted Trees**
-
-  + Ensemble of regression trees that are iteratively fit to previous trees' residuals
 
 
 ---
