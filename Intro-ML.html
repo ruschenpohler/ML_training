@@ -185,7 +185,7 @@ Second, we need to define "best fit".
 
 Equivalent to saying we need to minimize statistical loss `\(\ell ( \alpha , \beta )\)`.
 
-Let's make sense of this graphically.
+**Let's make sense of this graphically**!
 
 &lt;img src="Intro-ML_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
 
@@ -599,14 +599,13 @@ name: whereML2
 
 Paper: “_Inference on Treatment Effects after Selection among High-Dimensional Controls_”
 
-* Scenario: Experimental study, high-dimensional data with `\(p&gt;n\)`
+* Scenario: Experimental study with selection into take-up, high-dimensional data with `\(p&gt;n\)`
 * Goal: Select set of predictors `\(p_{small}&lt;n\)`
 
 “**Double-selection procedure**”:
-1. Use LASSO to select set of predictors for ..
-  + .. outcome `\(y_{i}\)`
-  + .. treatment assignment `\(d_{i}\)`
-1. Choose predictors in the union of sets as control variables
+1. Use LASSO to select set of predictors for outcome `\(y_{i}\)`
+1. Use LASSO to select set of predictors for treatment assignment `\(d_{i}\)`
+1. Choose predictors in the union of sets as set of controls `\(x_{i}\)`
 
 * Similar literature: 
   + Instrumental variables estimation (e.g., Spiess, 2017; Hartford et al., 2017)
@@ -627,7 +626,7 @@ Papers:
   + Wagner and Athey (JASA 2017) "_Estimation and Inference of Heterogeneous Treatment Effects using Random Forests_"
   + Davis and Heller (AER 2017) "_Using Causal Forests to Predict Treatment Heterogeneity_"
   
-* Random trees and random forests to select covariates to use for heterogeneous treatment estimation
+* **Random trees and random forests to select covariates for heterogeneous treatment estimation**
 
 
 ---
@@ -662,7 +661,20 @@ name: caveats1
 
 ## A) Ethics
 
-###
+&lt;br/&gt;
+
+Numerous ethical issues with Big Data
+
+* **Informed consent** as part of experiment
+  + Use of Big Data generally problematic
+  + Scraping data from website unbenownst to provider even more so!
+  
+* **Privacy** in general
+  + Same as above
+  
+* **Externalities**
+  + Agreeing to release network information without consent of network members
+
 
 
 ---
@@ -767,15 +779,16 @@ name: caveats5
 ### Problem
     
 External validity and out-of-sample prediction
-1. Performance under changed environmental conditions]
-2. Adversarial attacks
+1. Performance under changed environmental conditions
+2. Adversarial attacks (e.g., ~missing values)
 
 ### Solutions
     
-* Life-long maschine learning (Chen and Liu, 2016)
+* Life-long maschine learning
 * Transfer learning
 * Domain adaptation
 
+* Literature: e.g., Chen and Liu, 2016
 
 ---
 
