@@ -456,9 +456,9 @@ name: whatMLA
 <br/>
 **Construct a sparse model $\eta$ from high-dimensional data**
 
-Model $\eta_{i}$ predicts label $Y_{i}$ (=outcome) from a subset of features $X_{i}$ (= predictors)
+Model $\eta_{i}$ predicts label $y_{i}$ (=outcome) from a subset of features $x_{i}$ (= predictors)
 
-Features $X_{i}$ need to be selected (or weighed) such that model $\eta$ best generalizes to new data ("out of sample")
+Features $x_{i}$ need to be selected (or weighed) such that model $\eta$ best generalizes to new data ("out of sample")
 
 But: At the core, **still (out-of-sample) loss minimization**!
 
