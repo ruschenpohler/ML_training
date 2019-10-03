@@ -216,7 +216,7 @@ name: standard
 
 ## An Inference Problem
 
-Given a limited set of predictors, we would like to predict an outcome: $\mathbb {E} \left[ y_{i} | x_{i} \right]$.
+Given a set of predictors, we would like to predict an outcome: $\mathbb {E} \left[ y_{i} | x_{i} \right]$.
 
 That is, what is $y_{i}$ given $x_{i}$?
 
@@ -344,7 +344,7 @@ With quadratic loss fct $\ell(\alpha,\beta)$ (as per "ordinary least squares"), 
 $$\ell(\alpha,\beta) = \sum_{i=1} ^ {n} \left( y_{i} - \eta_{i} \right)^{2}$$
 That is, we consider the squared distance between our model prediction $\eta_{i}$ of blood pressure and real measures of blood pressure $y_{i}$.
 
-This works great!
+Now, all we need is to find the straight line that minimizes $\ell(\alpha,\beta)$.
 
 <br/>
 
@@ -392,11 +392,13 @@ name: whatMLA
 
 ## A) Goal of Machine Learning
 
-Construct a sparse model $\eta$ from high-dimensional data
+**Construct a sparse model $\eta$ from high-dimensional data**
 
 Model $\eta_{i}$ predicts label $Y_{i}$ (=outcome) from a subset of features $X_{i}$ (= predictors)
 
 Features $X_{i}$ need to be selected (or weighed) such that model $\eta$ best generalizes to new data ("out of sample")
+
+But: At the core, **still (out-of-sample) loss minimization**!
 
 
 ---
