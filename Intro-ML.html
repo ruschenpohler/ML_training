@@ -67,7 +67,7 @@ layout: false
 
 .pull-right[
 
-### II. [Why Machine Learning](#whyMLA)
+### II. [Why Machine Learning](#whyML)
   - [High Dimensionality](#whyMLA)
   - [Prediction vs. Causal Inference](#whyMLB)
   
@@ -92,7 +92,9 @@ Given a set of predictors, we would like to predict an outcome: `\(\mathbb {E} \
 
 That is, what is `\(y_{i}\)` given `\(x_{i}\)`?
 
-- Example: What impact does red meat `\(x_{i}\)` have on general health `\(y_{i}\)`?
+  + Example: What impact does red meat `\(x_{i}\)` have on general health `\(y_{i}\)`?
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-1-1.svg" style="display: block; margin: auto;" /&gt;
 
 ### Practically, we have to:
 
@@ -139,7 +141,7 @@ Data on daily measures of blood pressure
 
 **Link fct**: All else equal, does meat consumption `\(x_{i}\)` predict blood pressure `\(y_{i}\)`?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -170,7 +172,7 @@ But we still don't know **_what_ straight line best approximates the relationshi
 
 .pull-right[
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
 ]
 
 
@@ -187,8 +189,7 @@ Equivalent to saying we need to minimize statistical loss `\(\ell ( \alpha , \be
 
 **Let's make sense of this graphically**!
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
-
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -206,6 +207,14 @@ Now, all we need is to find the **straight line that minimizes `\(\ell(\alpha,\b
 &lt;br/&gt;
 
 A process called Stochastic Gradient Descent does this for us!
+
+
+---
+name: whyML
+
+# II. Why Machine Learning?
+
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -270,7 +279,7 @@ name: whyMLB1
 
 # II. Why Machine Learning?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
 
 Two covariates are highly (negatively) correlated
 * Confidence interval is elliptic
@@ -328,7 +337,7 @@ name: whatMLB1
 
 ### Types of cost fcts
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
 
 Take-away: Different ways of penalizing model complexity.
 
@@ -394,7 +403,7 @@ name: whyMLC
 
 ## C) Bias-Variance Tradeoff
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 name: whatMLD
@@ -455,7 +464,7 @@ name: whatMLE2
   + Resulting prediction is highly flexible
   + Black box
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 name: whatMLF
@@ -536,7 +545,7 @@ name: whereML1a
 
 # IV. Where can ML be Put to Use?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -563,7 +572,7 @@ name: whereML1c
 
 # IV. Where can ML be Put to Use?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -571,7 +580,7 @@ name: whereML1d
 
 # IV. Where can ML be Put to Use?
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
 
 .pull-left[
   
@@ -685,7 +694,7 @@ name: caveats2
 
 ## B) Opacity or explainability problem ("black box")
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
 
 Link: [Hutson (2018a)](https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy)
 
@@ -746,7 +755,7 @@ name: caveats4
 
 ## D) Reproducibility
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
 
 Link: [Hutson (2018b)](https://science.sciencemag.org/content/359/6377/725)
 
@@ -861,7 +870,7 @@ name: extras1a
 # Additional Slides
 
 
-&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro-ML_files/figure-html/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
 
 
 ---

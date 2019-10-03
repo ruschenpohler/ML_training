@@ -194,7 +194,7 @@ layout: false
 
 .pull-right[
 
-### II. [Why Machine Learning](#whyMLA)
+### II. [Why Machine Learning](#whyML)
   - [High Dimensionality](#whyMLA)
   - [Prediction vs. Causal Inference](#whyMLB)
   
@@ -219,7 +219,14 @@ Given a set of predictors, we would like to predict an outcome: $\mathbb {E} \le
 
 That is, what is $y_{i}$ given $x_{i}$?
 
-- Example: What impact does red meat $x_{i}$ have on general health $y_{i}$?
+  + Example: What impact does red meat $x_{i}$ have on general health $y_{i}$?
+
+```{r, fig.width=5, fig.height=1.7, echo=FALSE}
+library(png)
+library(grid)
+meat <- readPNG("pics/meatBlood.png")
+grid.raster(meat, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
+```
 
 ### Practically, we have to:
 
@@ -332,7 +339,6 @@ grid.raster(leastSquares, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1,
 ```
 
 
-
 ---
 name: standard2a
 
@@ -348,6 +354,19 @@ Now, all we need is to find the **straight line that minimizes $\ell(\alpha,\bet
 <br/>
 
 A process called Stochastic Gradient Descent does this for us!
+
+
+---
+name: whyML
+
+# II. Why Machine Learning?
+
+```{r, fig.width=8, fig.height=5, echo=FALSE}
+library(png)
+library(grid)
+meme <- readPNG("pics/Meme.png")
+grid.raster(meme, x = unit(0.5, "npc"), y = unit(0.5, "npc"), width = 1, height = 1,)
+```
 
 
 ---
