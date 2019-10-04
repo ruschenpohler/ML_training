@@ -405,7 +405,7 @@ $$Y = \begin{bmatrix}
 
 <br/>
 
-We need ways to generate **sparse models** that predict well in **high-dimensional space** (~many predictors).
+We need ways to generate **sparse (~parsimonious) models** that predict well in **high-dimensional space** (~many predictors).
 
 
 ---
@@ -456,7 +456,7 @@ name: whatMLA
 ## A) Goal of Machine Learning
 
 <br/>
-**Construct a sparse model $\eta$ from high-dimensional data**
+**Construct a sparse (~parsimonious) model $\eta$ from high-dimensional data**
 
 Model $\eta_{i}$ predicts label $y_{i}$ (=outcome) from a subset of features $x_{i}$ (= predictors)
 
