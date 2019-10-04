@@ -1,5 +1,5 @@
 # ML_training
 
-Internal training at CEGA, 09/03/2019
+Conceptual introduction to simple supervised ML techniques (regularization, cross validation); applications in development economics, and caveats
 
-Conceptual introdction to machine learning, opportunities and caveats for development research
+Internal seminar at UCB CEGA, 10/03/2019
