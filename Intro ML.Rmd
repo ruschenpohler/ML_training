@@ -1,6 +1,6 @@
 ---
-title: "A Conceptual Introduction to ML"
-subtitle: "Internal Presentation, CEGA"
+title: "First Steps in Machine Learning"
+subtitle: "A Conceptual Introduction to Penalized Regression"
 author: "Julius Ruschenpohler"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
