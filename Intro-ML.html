@@ -88,7 +88,7 @@ name: standard
 
 ## An Inference Problem
 
-Given a set of predictors, we would like to predict an outcome: `\(\mathbb {E} \left[ y_{i} | x_{i} \right]\)`.
+Given a set of covariates, we would like to predict an outcome: `\(\mathbb {E} \left[ y_{i} | x_{i} \right]\)`.
 
 That is, what is `\(y_{i}\)` given `\(x_{i}\)`?
 
@@ -100,7 +100,7 @@ That is, what is `\(y_{i}\)` given `\(x_{i}\)`?
 
 .pull-left[
 
-1. Link predictors to outcome (link fct)
+1. Link covariates to outcome (link fct)
 1. Define best fit criteria (loss fct)
 1. Maximize fit
 ]
@@ -229,7 +229,7 @@ name: whyMLA
 
 But what if we are not only interested in the effect of meat consumption?
 
-**What if the set of predictors `\(p\)` is large**?
+**What if the set of covariates `\(p\)` is large**?
 
 Potentially even: `\(p \gg n\)`!
 
@@ -253,7 +253,7 @@ Potentially even: `\(p \gg n\)`!
 
 &lt;br/&gt;
 
-We need ways to generate **sparse (~parsimonious) models** that predict well in **high-dimensional space** (~many predictors).
+We need ways to generate **sparse (~parsimonious) models** that predict well in **high-dimensional space** (~many covariates).
 
 
 ---
@@ -272,7 +272,7 @@ name: whyMLB
 ### Prediction
 
 **Best prediction**
-* Example: What is the best prediction for blood pressure `\(y_{i}\)` given a large set of predictors `\(p_{large}\)`?
+* Example: What is the best prediction for blood pressure `\(y_{i}\)` given a large set of covariates `\(p_{large}\)`?
 * Origin: Face recognition
 * Search for `\(\hat{y}\)`
 
@@ -301,7 +301,7 @@ name: whatMLA
 &lt;br/&gt;
 **Construct a sparse (~parsimonious) model `\(\eta\)` from high-dimensional data**
 
-Model `\(\eta_{i}\)` predicts label `\(y_{i}\)` (=outcome) from a subset of features `\(x_{i}\)` (= predictors)
+Model `\(\eta_{i}\)` predicts label `\(y_{i}\)` (=outcome) from a subset of features `\(x_{i}\)` (= covariates)
 
 Features `\(x_{i}\)` need to be selected (or weighed) such that model `\(\eta\)` best generalizes to new data ("out of sample")
 
@@ -319,7 +319,7 @@ Open question: **How to deal with high dimensionality in data?**
 
 Let's remember the loss fct: `\(\ell(\alpha,\beta)\)`
 
-* However, now the set of potential predictors is large!
+* However, now the set of potential covariates is large!
 
 To make the model less complex, we would like to select only the most important predictors ("regularization").
 
@@ -612,7 +612,7 @@ name: whereML2
 Paper: [“_Inference on Treatment Effects after Selection among High-Dimensional Controls_”](https://academic.oup.com/restud/article/81/2/608/1523757/) [(UNGATED)](https://arxiv.org/abs/1201.0224)
 
 * Scenario: Experimental study, selection into take-up, high-dimensional data with `\(p \gg n\)`
-* Goal: Find best set of predictors `\(p_{small} \ll n\)` to predict take-up
+* Goal: Predict take-up from universe of covariates `\(p\)`
 
 “**Double-selection procedure**”:
 1. Use LASSO to select set of predictors for outcome `\(y_{i}\)`
@@ -813,7 +813,7 @@ name: caveats6
 
 Many ML papers are weak on the identification side
   + **Strong ignorability assumption**
-  + Only difference: Optimized set of predictors drawing on the set of all measured predictors
+  + Only difference: Optimized prediction drawing on the universe of covariates
 
 ### Selective Labels for the Tested
 
