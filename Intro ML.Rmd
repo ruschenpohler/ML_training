@@ -378,12 +378,13 @@ name: whyMLA
 
 ## A) High Dimensionality and Sparcity
 
+### High dimensionality
 
 But what if we are not only interested in the effect of meat consumption?
 
 **What if the set of covariates $p$ is large**?
 
-Potentially even: $p \gg n$!
+Potentially: $p \gg n$!
 
 .pull-left[
 
@@ -407,6 +408,21 @@ $$Y = \begin{bmatrix}
 
 We need ways to generate **sparse (~parsimonious) models** that predict well in **high-dimensional space** (~many covariates).
 
+
+---
+name: whyMLA1
+
+# II. Why Machine Learning?
+
+### Sparcity
+
+Large number of potential covariates ( $p \gg n$ ) poses challenge to conventional estimation
+
+**Condition of sparcity**
+- Existence of approximations to complete set of potential controls $p$ 
+  + ... require **limited set of controls $s$**
+  + ... **render approximation error small** (comp. to estimation error)
+- Hence: Estimation tractable!
 
 ---
 name: whyMLB

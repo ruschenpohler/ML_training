@@ -4,7 +4,7 @@
     <title>First Steps in Machine Learning</title>
     <meta charset="utf-8" />
     <meta name="author" content="Julius Ruschenpohler" />
-    <meta name="date" content="2019-10-08" />
+    <meta name="date" content="2019-10-23" />
     <link href="Intro-ML_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="Intro-ML_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="Intro-ML_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 # First Steps in Machine Learning
 ## A Conceptual Introduction to Penalized Regression
 ### Julius Ruschenpohler
-### 08 October 2019
+### 23 October 2019
 
 ---
 
@@ -226,12 +226,13 @@ name: whyMLA
 
 ## A) High Dimensionality and Sparcity
 
+### High dimensionality
 
 But what if we are not only interested in the effect of meat consumption?
 
 **What if the set of covariates `\(p\)` is large**?
 
-Potentially even: `\(p \gg n\)`!
+Potentially: `\(p \gg n\)`!
 
 .pull-left[
 
@@ -255,6 +256,21 @@ Potentially even: `\(p \gg n\)`!
 
 We need ways to generate **sparse (~parsimonious) models** that predict well in **high-dimensional space** (~many covariates).
 
+
+---
+name: whyMLA1
+
+# II. Why Machine Learning?
+
+### Sparcity
+
+Large number of potential covariates ( `\(p \gg n\)` ) poses challenge to conventional estimation
+
+**Condition of sparcity**
+- Existence of approximations to complete set of potential controls `\(p\)` 
+  + ... require **limited set of controls `\(s\)`**
+  + ... **render approximation error small** (comp. to estimation error)
+- Hence: Estimation tractable!
 
 ---
 name: whyMLB
